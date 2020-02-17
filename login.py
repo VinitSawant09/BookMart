@@ -4,7 +4,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return render_template('login.html')
+
+    error ='Invalid Login'
+    return render_template('login.html', error=error)
 
 @app.route('/<name>')
 def helloName(name):

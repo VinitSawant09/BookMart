@@ -2,11 +2,15 @@
 <html>
 <head>
 <link rel="stylesheet" href=" {{ url_for('static', filename='/css/style.css') }}">
+    <script src="{{ url_for('static', filename='/js/login.js') }}"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
-
+   function checkAlert()
+   {
+   alert("CHECK ALERT");
+   }
 	/*
 	var uname=document.getElementById("uname").value;
 	alert(uname);
@@ -45,11 +49,11 @@
 
 <body onload="myFunction()">
 
-<h2><center>Login Form for VS Super-market</center></h2>
+<h2><center>SignIn Form for BookMart SignIn Form</center></h2>
 
 <form method="post" action="LoginCheck" >
   <div class="imgcontainer">
-    <img src="images/icon.jpg" alt="Avatar" class="avatar">
+    <img src="{{ url_for('static', filename='/img/icon.png') }}" alt="Avatar" class="avatar">
   </div>
 
   <div class="containerlogin">
@@ -61,10 +65,10 @@
       <div id ="errorDiv" class ="errorDiv" style="
     margin-left: -30px;
       ">
-
+      {{error}}
     </div>
 
-    <button type="submit"  >Login</button>
+    <button type="button" onClick="loginForm()" >Login</button>
 
   </div>
 
