@@ -1,25 +1,21 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, url_for
+from werkzeug.utils import redirect
+
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello():
 
-    error ='Invalid Login'
-    return render_template('login.html', error=error)
+     #error ='Invalid Login'
+     return render_template('login.html')#, error=error)
 
-@app.route('/<name>')
-def helloName(name):
+@app.route('/login/', methods=['GET','POST'])
+def userLogin():
 
-    modname = name
-    if modname[-1] != 'y':
-        modname = modname + 'y'
-    else:
-        modname = modname[0:-1] + 'iful'
+     print("inside login")
 
-    return "Hello {}!".format(modname)
-
-
+     return render_template('home.html')
 
 if __name__ == '__main__':
     app.run()

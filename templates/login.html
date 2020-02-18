@@ -3,72 +3,39 @@
 <head>
 <link rel="stylesheet" href=" {{ url_for('static', filename='/css/style.css') }}">
     <script src="{{ url_for('static', filename='/js/login.js') }}"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
-   function checkAlert()
-   {
-   alert("CHECK ALERT");
-   }
-	/*
-	var uname=document.getElementById("uname").value;
-	alert(uname);
-	var password=document.getElementById("password").value;
-	var flag= true;
-	if(uname!='admin' && password !='admin')
-		{
-		  flag=false;
-		}
-    if(flag==false)
-    	{
-    	document.getElementById("errorDiv").innerHTML="Invalid credentials";
-    	alert("invalid credentials")
-    	}
-    */
-   function  myFunction()
-    {
-        var status= '${sessionScope.Status}';
-        if(status==""||status==null ||status=="success")
-        	{
-        	document.getElementById("errorDiv").innerHTML="";
-        	}
-        else if(status=="Invalid user credentials")
-        	{
-        	 document.getElementById("errorDiv").innerHTML="${sessionScope.Status}";
-        	}
 
-    }
-
-	//document.getElementById("errorDiv").value="` ${sessionScope.Status}`';
 
 </script>
 </head>
 
 
 
-<body onload="myFunction()">
+<body >
 
 <h2><center>SignIn Form for BookMart SignIn Form</center></h2>
 
-<form method="post" action="LoginCheck" >
+<form method="post" >
   <div class="imgcontainer">
     <img src="{{ url_for('static', filename='/img/icon.png') }}" alt="Avatar" class="avatar">
   </div>
 
   <div class="containerlogin">
     <label for="uname"><b style="margin-left: -30px">Username : </b></label>
-    <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+    <input type="text" placeholder="Enter Username" name="username" id="username" required>
 
     <label for="psw"><b style="margin-left: -30px">Password : </b></label>
     <input type="password" placeholder="Enter Password" name="password" id ="password" required>
       <div id ="errorDiv" class ="errorDiv" style="
     margin-left: -30px;
       ">
-      {{error}}
+
     </div>
 
-    <button type="button" onClick="loginForm()" >Login</button>
+    <button type="button" onClick="return loginForm();" >Login</button>
 
   </div>
 
