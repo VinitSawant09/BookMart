@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+    <script src="{{ url_for('static', filename='/js/login.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<div class="header">
+
+    	<div class="logoheader">
+
+			<img class="od_header_icon_img" rel="shortcut icon" src="{{ url_for('static', filename='/img/icon.png') }}" />
+
+    		<span class="logo">Book Mart</span>
+
+   		</div>
+
+   			<div class="meta-nav">
+   				<div class="main_nav">
+    				<a class="navi" onclick="goHome()">Home</a>
+
+    				<a class="navi" onclick="transac()">Transactions</a>
+
+   					 <a onclick="logout()" class ="navi" >Logout</a>
+
+   					 <span class="username">Hello {{username}}  .!</span>
+    			</div>
+    		</div>
+
+
+    </div>
+</body>
+</html>

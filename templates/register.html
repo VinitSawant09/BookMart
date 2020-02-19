@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href=" {{ url_for('static', filename='/css/style.css') }}">
+<link rel="stylesheet" href=" {{ url_for('static', filename='/css/styleRegister.css') }}">
     <script src="{{ url_for('static', filename='/js/login.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,14 +29,15 @@
 
     <label for="psw"><b style="margin-left: -30px">Password : </b></label>
     <input type="password" placeholder="Enter Password" name="password" id ="password" required>
-      <div id ="errorDiv" class ="errorDiv" style="
+
+    <label for="psw"><b style="margin-left: -30px">Re-enter Password : </b></label>
+    <input type="password" placeholder="Re Enter Password" name="repassword" id ="repassword" required>
+       <div id ="errorDiv" class ="errorDiv" style="
     margin-left: -30px;
       ">
 
     </div>
-
-    <button type="button" onClick="return loginForm();" >SignIn</button>
-    <button type="button" onClick="redirectTosignUp();" >SignUp</button>
+    <button type="button" onClick="return signUp();" >SignUp</button>
 
   </div>
 

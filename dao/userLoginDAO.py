@@ -9,9 +9,9 @@ class userLoginDAO:
 
         print("inside validateUserLogin in dao")
         username = data.get('username')
-        print(username)
+
         password = data.get('password')
-        print(password)
+
         response=1
         try:
             objdatabase = database()
