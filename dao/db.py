@@ -14,7 +14,7 @@ class dataBase:
     def dbConn(self):
         try:
 
-           cursor=self.conn.cursor()
+           cursor = self.conn.cursor()
 
            return cursor;
         except:

@@ -1,19 +1,16 @@
 from dao.userLoginDAO import userLoginDAO as userLoginDAO
 
-luserLoginDAO = userLoginDAO()
 class userLogin:
 
-    def __init__(self):
-        self.loginId = ""
-        self.password = ""
-        self.validUser = ""
 
-    def validateUserLogin(self):
 
-         objuserLogin = userLogin()
-         objuserLogin.loginId = ''
-         objuserLogin.password = ''
-         val = luserLoginDAO.validateUserLogin(objuserLogin)
+    def validateUserLogin (data):
+
+         print("inside validateUserLogin")
+         luserLoginDAO = userLoginDAO()
+         print(data.get('username'))
+         val = luserLoginDAO.validateUserLogin(data)
+
          return val
 
 

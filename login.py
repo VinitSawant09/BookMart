@@ -1,16 +1,20 @@
-from flask import Flask, render_template
-app = Flask(__name__)
+from flask import Flask, render_template, request
+from controller.userLogin import userLogin as userLogin
+import json
 
+app = Flask(__name__)
 @app.route('/')
 def hello():
      return render_template('login.html')
 
-@app.route('/login/', methods=['GET','POST'])
-def userLogin():
+@app.route('/login/', methods=['POST'])
+def validateLogin():
 
      print("inside login")
+     userdata = json.loads(request.data)
 
-     return 'false'
+     response = userLogin.validateUserLogin(userdata)
+     return str(response)
 
 @app.route('/home/',methods=['GET','POST'])
 def home():

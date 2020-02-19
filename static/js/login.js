@@ -12,17 +12,23 @@ function loginForm()
 		}
     else
     {
+
+      formData= {
+        "username":username,
+        "password":password
+      }
       $.ajax(
        {
         url  : "/login/",
-        data : 'hello',
+        contentType: "application/json",
+        data: JSON.stringify(formData),
         type : 'POST',
         contentType: false,
         cache: false,
         processData: false,
         success: function(response){
         alert(response);
-        if (response=='true')
+        if (response==0)
         {
           window.location.href ='/home/';
         }
