@@ -1,8 +1,5 @@
-from flask import Flask, render_template, jsonify, url_for
-from werkzeug.utils import redirect
-
+from flask import Flask, render_template
 app = Flask(__name__)
-
 
 @app.route('/')
 def hello():
@@ -15,7 +12,14 @@ def userLogin():
 
      print("inside login")
 
+     return 'false'
+
+@app.route('/home/',methods=['GET','POST'])
+def home():
+
+     print("inside home")
+
      return render_template('home.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

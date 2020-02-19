@@ -1,7 +1,14 @@
-from flask import Flask, render_template
-app = Flask(__name__)
+from dao.userLoginDAO import userLoginDAO as userLoginDAO
 
-@app.route('/login', methods=['GET'])
-def userLogin():
+luserLoginDAO = userLoginDAO()
+class userLogin:
 
-     return render_template('home.html')
+    def __init__(self):
+        self.loginId = ""
+        self.password = ""
+        self.validUser = ""
+
+    def validateUserLogin(self):
+         luserLoginDAO.validateUserLogin()
+
+

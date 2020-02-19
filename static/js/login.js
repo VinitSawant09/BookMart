@@ -20,8 +20,16 @@ function loginForm()
         contentType: false,
         cache: false,
         processData: false,
-        success: function(){
-        /*window.location.href ='/home.html';*/
+        success: function(response){
+        alert(response);
+        if (response=='true')
+        {
+          window.location.href ='/home/';
+        }
+        else
+        {
+          document.getElementById("errorDiv").innerHTML="Invalid credentials!";
+        }
 
         }
        });
