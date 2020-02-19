@@ -8,6 +8,7 @@ class dataBase:
                               'Database=BookMart;'
                               'Trusted_Connection=yes;'
                               )
+
         except:
             print("Something went wrong in database connection.!! Contact the administrator.!")
 
@@ -20,4 +21,12 @@ class dataBase:
         except:
             ("Something went wrong in database connection.!! Contact the administrator.!")
 
+    def insertdbConn(self,conn):
+        try:
+
+           cursor = conn.cursor()
+
+           return cursor;
+        except:
+            ("Something went wrong in database connection.!! Contact the administrator.!")
 

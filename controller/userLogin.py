@@ -13,4 +13,13 @@ class userLogin:
 
          return val
 
+    def registerUser (data):
+
+         print("inside registerUser")
+         luserLoginDAO = userLoginDAO()
+
+         val = luserLoginDAO.registerUser(data)
+
+         return val
+
 

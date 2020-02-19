@@ -34,12 +34,14 @@ def register():
 
     return render_template('register.html')
 
-@app.route("/signup/")
+@app.route("/signup/", methods=['POST'])
 def signup():
     print("inside signup")
+    userdata = json.loads(request.data)
 
+    response = userLogin.registerUser(userdata)
 
-    return render_template('register.html')
+    return str(response)
 
 
 @app.route("/logout/")

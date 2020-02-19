@@ -6,12 +6,15 @@ function loginForm()
 
 	if(username == null || password == null || username =='' || password =='')
 		{
-		  alert("inside if");
+
 		  document.getElementById("errorDiv").innerHTML="User Name/password cannot be blank.!!";
 		  return false;
 		}
     else
     {
+
+
+
 
       formData= {
         "username":username,
@@ -27,7 +30,7 @@ function loginForm()
         cache: false,
         processData: false,
         success: function(response){
-        alert(response);
+
         if (response==0)
         {
           window.location.href ='/home/';
@@ -64,7 +67,7 @@ function signUp()
 
 	if(username == null || password == null || username =='' || password =='' || repassword == null || repassword =='')
 		{
-		  alert("inside if");
+
 		  document.getElementById("errorDiv").innerHTML="User Name/password cannot be blank.!!";
 		  return false;
 		}
@@ -89,11 +92,15 @@ function signUp()
         cache: false,
         processData: false,
         success: function(response){
-        alert(response);
+
         if (response==0)
         {
           window.location.href ='/';
-          document.getElementById("errorDiv").innerHTML="Registred Succesfully.!";
+          document.getElementById("errorDiv").innerHTML="Registered Succesfully.!";
+        }
+        else if (response==1)
+        {
+          document.getElementById("errorDiv").innerHTML="User Name Already Exists.!";
         }
         }
        });
