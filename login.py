@@ -3,9 +3,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-
-     #error ='Invalid Login'
-     return render_template('login.html')#, error=error)
+     return render_template('login.html')
 
 @app.route('/login/', methods=['GET','POST'])
 def userLogin():

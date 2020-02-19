@@ -9,6 +9,11 @@ class userLogin:
         self.validUser = ""
 
     def validateUserLogin(self):
-         luserLoginDAO.validateUserLogin()
+
+         objuserLogin = userLogin()
+         objuserLogin.loginId = ''
+         objuserLogin.password = ''
+         val = luserLoginDAO.validateUserLogin(objuserLogin)
+         return val
 
 
