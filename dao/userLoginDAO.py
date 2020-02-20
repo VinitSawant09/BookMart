@@ -83,3 +83,47 @@ class userLoginDAO:
             return response
         except:
             ("Something went wrong.!! Contact the administrator.!")
+
+    def changePassword(self, username,password):
+
+        print("inside changePassword in dao")
+
+        db = database()
+        cursor = db.insertdbConn(self.conn)
+        try:
+            sql = 'update  dbo.BM_USERS set UserPassword=? where UserName=?'
+            with self.conn as cursor:
+                print("execute")
+                cursor.execute(sql, password, username)
+            return 0
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+
+    def validateUserLogin(self, data):
+
+        print("inside validateUserLogin in dao")
+        username = data.get('username')
+
+        password = data.get('password')
+
+        response=1
+        try:
+            objdatabase = database()
+            cursor = objdatabase.dbConn()
+            sql = 'SELECT * FROM dbo.BM_USERS where UserName=?'
+            cursor.execute(sql, username)
+            records = cursor.fetchall()
+            print(records)
+            for row in records:
+                if row[2] == password:
+                    response=0
+
+                    return response
+
+            return response
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()

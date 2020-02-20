@@ -3,6 +3,7 @@ from controller.userLogin import userLogin as userLogin
 import json
 from dao.userLoginDAO import userLoginDAO as userLoginDAO
 from dao.db import dataBase as database
+from impl.email import email as email
 app = Flask(__name__)
 @app.route('/')
 def hello():
@@ -52,10 +53,17 @@ def sendPassword():
     username = userdata.get('username')
     objdatabase = database()
     cursor = objdatabase.dbConn()
-    response = userLoginDAO.checkExistingUser('',username, cursor)
-    print(response)
-    if response == 1:
-        print()
+    count = userLoginDAO.checkExistingUser('',username, cursor)
+    print(count)
+    objemail = email()
+    if count == 1:
+        password = objemail.genPassword()
+        print(password)
+        response = userLogin.changePassword(username, password)
+        if response == 0:
+
+            objemail.sendEmail()
+
 
 
     return str(response)

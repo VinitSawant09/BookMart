@@ -1,25 +1,65 @@
 import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import random
+import string
+from dao.db import dataBase as database
+from dao.userLoginDAO import userLoginDAO as userLoginDAO
 class email:
 
-    def sendEmail():
+    def __init__(self):
+        try:
+            pass
+
+        except:
+            print("Something went wrong in database connection.!! Contact the administrator.!")
+
+    def genPassword(self,stringLength=10):
+        letters = string.ascii_lowercase
+
+        password = ''.join(random.choice(letters) for i in range(stringLength))
+
+        return password
+
+
+
+    def sendEmail(self,userEmail):
+
         smtp_server = "smtp.gmail.com"
         port = 587  # For starttls
-        sender_email = "my@gmail.com"
-        password = input("Type your password and press enter: ")
-
+        sender_email = "vinitvilassawant@gmail.com"
+        password = "9167041011"
+        emailObj =email()
+        rpassword = emailObj.genPassword(userEmail)
         # Create a secure SSL context
         context = ssl.create_default_context()
+        if rpassword!='':
+            # Try to log in to server and send email
+            try:
+                server = smtplib.SMTP(smtp_server, port)
+                server.ehlo()  # Can be omitted
+                server.starttls(context=context)  # Secure the connection
+                server.ehlo()  # Can be omitted
+                server.login(sender_email, password)
+                # TODO: Send email here
+                message = MIMEMultipart("alternative")
+                message["Subject"] = "multipart test"
+                message["From"] = sender_email
+                message["To"] = userEmail
+                text = """\
+                Hi,
+                Your password is """+rpassword
+                part = MIMEText(text, "plain")
+                message.attach(part)
+                context = ssl.create_default_context()
+                with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+                    server.login(sender_email, password)
+                    server.sendmail(
+                        sender_email, userEmail, message.as_string()
+                    )
+                return 1
 
-        # Try to log in to server and send email
-        try:
-            server = smtplib.SMTP(smtp_server, port)
-            server.ehlo()  # Can be omitted
-            server.starttls(context=context)  # Secure the connection
-            server.ehlo()  # Can be omitted
-            server.login(sender_email, password)
-            # TODO: Send email here
-        except Exception as e:
-            # Print any error messages to stdout
-            print(e)
-        finally:
-            server.quit()
+            except:
+                print("Something went wrong in database connection.!! Contact the administrator.!")
+            finally:
+                server.quit()
