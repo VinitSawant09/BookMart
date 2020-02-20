@@ -67,7 +67,7 @@ class userLoginDAO:
         finally:
             cursor.close()
 
-    def checkExistingUser(self, username,cursor):
+    def checkExistingUser(self, username, cursor):
 
         print("inside checkExistingUser in dao")
 

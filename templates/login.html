@@ -16,7 +16,7 @@
 
 <body >
 
-<h2><center>SignIn Form for BookMart SignIn Form</center></h2>
+<h2><center>SignIn Form for BookMart </center></h2>
 
 <form method="post" >
   <div class="imgcontainer">
@@ -25,18 +25,29 @@
 
   <div class="containerlogin">
     <label for="uname"><b style="margin-left: -30px">Username : </b></label>
-    <input type="text" placeholder="Enter Username" name="username" id="username" required>
 
+    <input type="text" placeholder="Enter Username" name="username" id="username" required>
+    <div id="divPassword">
     <label for="psw"><b style="margin-left: -30px">Password : </b></label>
+
     <input type="password" placeholder="Enter Password" name="password" id ="password" required>
+    </div>
       <div id ="errorDiv" class ="errorDiv" style="
     margin-left: -30px;
       ">
 
     </div>
-
+    <div id="buttons">
     <button type="button" onClick="return loginForm();" >SignIn</button>
     <button type="button" onClick="redirectTosignUp();" >SignUp</button>
+    </div>
+    <div id="sendPassword" style="display:none">
+      <button type="button" onClick="return sendPassword();" >Send Password</button>
+    </div>
+    <br>
+    <div id="fpass">
+      <span class="psw">Forgot <a href="#" onclick='return forgotPassword()'>password?</a></span>
+    </div>
 
   </div>
 

@@ -1,7 +1,8 @@
 from flask import *
 from controller.userLogin import userLogin as userLogin
 import json
-
+from dao.userLoginDAO import userLoginDAO as userLoginDAO
+from dao.db import dataBase as database
 app = Flask(__name__)
 @app.route('/')
 def hello():
@@ -41,6 +42,21 @@ def signup():
     userdata = json.loads(request.data)
 
     response = userLogin.registerUser(userdata)
+
+    return str(response)
+
+@app.route("/sendPassword/", methods=['POST'])
+def sendPassword():
+    print("inside sendPassword")
+    userdata = json.loads(request.data)
+    username = userdata.get('username')
+    objdatabase = database()
+    cursor = objdatabase.dbConn()
+    response = userLoginDAO.checkExistingUser('',username, cursor)
+    print(response)
+    if response == 1:
+        print()
+
 
     return str(response)
 

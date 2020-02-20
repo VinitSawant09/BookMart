@@ -13,9 +13,6 @@ function loginForm()
     else
     {
 
-
-
-
       formData= {
         "username":username,
         "password":password
@@ -50,6 +47,61 @@ function logout()
 {
  window.location.href ='/logout/';
 }
+
+function forgotPassword()
+{
+
+document.getElementById("divPassword").innerHTML="";
+document.getElementById("buttons").innerHTML="";
+document.getElementById("sendPassword").style.display = 'block';
+document.getElementById("fpass").innerHTML="";
+
+return true;
+}
+
+function sendPassword()
+{
+  var username=document.getElementById("username").value;
+  if(username == null || username =='')
+		{
+
+		  document.getElementById("errorDiv").innerHTML="User Name cannot be blank.!!";
+		  return false;
+		}
+  else
+  {
+      formData= {
+        "username":username
+      }
+      $.ajax(
+       {
+        url  : "/sendPassword/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response==0)
+        {
+          window.location.href ='/';
+        }
+        else
+        {
+          document.getElementById("errorDiv").innerHTML="User Name is invalid.!";
+        }
+
+        }
+       });
+
+
+  }
+  return true;
+
+}
+
 
 function redirectTosignUp()
 {
@@ -106,6 +158,9 @@ function signUp()
        });
 
      }
+
+
+
 
 
 }
