@@ -57,14 +57,11 @@ def sendPassword():
     objemail = email()
     if count == 1:
         password = objemail.genPassword()
-        print(password)
+
         response = userLogin.changePassword(username, password)
         if response == 0:
             emailId = userLogin.fetchEmail(username)
-            #objemail.sendEmail(emailId)
-            print(emailId)
-
-
+            response = objemail.sendEmail(emailId,password)
 
     return str(response)
 

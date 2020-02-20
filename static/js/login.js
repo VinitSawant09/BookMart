@@ -87,6 +87,7 @@ function sendPassword()
         if (response==0)
         {
           window.location.href ='/';
+          alert("Please check your mail for Password and sign in.")
         }
         else
         {
