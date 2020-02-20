@@ -110,6 +110,47 @@ window.location.href ='/register/';
 
 }
 
+function checkUserName()
+{
+ var username=document.getElementById("username").value;
+ document.getElementById("errorDiv").innerHTML="";
+
+ if(username == null || username =='')
+		{
+
+		  document.getElementById("errorDiv").innerHTML="User Name cannot be blank.!!";
+		  return false;
+		}
+  else
+  {
+      formData= {
+        "username":username
+      }
+      $.ajax(
+       {
+        url  : "/checkUserName/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!=0)
+        {
+          document.getElementById("errorDiv").innerHTML="User Name already exists.!";
+          return false;
+        }
+
+        }
+       });
+    }
+return true;
+
+}
+
+
 function signUp()
 {
 
@@ -131,10 +172,14 @@ function signUp()
 	}
     else
     {
-      formData= {
+      alert("entering else up")
+      if(checkUserName()!= false)
+      {
+         alert("entering sign up")
+         formData= {
         "username":username,
         "password":password
-      }
+        }
       $.ajax(
        {
         url  : "/signup/",
@@ -158,10 +203,7 @@ function signUp()
         }
        });
 
+  }
      }
-
-
-
-
 
 }

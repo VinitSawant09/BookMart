@@ -73,7 +73,18 @@ def userlogout():
 
     return render_template('login.html')
 
+@app.route("/checkUserName/",methods=['POST'])
+def checkUserName():
+    print("inside checkUserName")
+    userdata = json.loads(request.data)
+    username = userdata.get('username')
+    objdatabase = database()
+    cursor = objdatabase.dbConn()
+    count = 0
 
+    count = userLoginDAO.checkExistingUser('', username, cursor)
+
+    return str(count)
 
 
 if __name__ == '__main__':

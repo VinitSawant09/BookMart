@@ -74,15 +74,19 @@ class userLoginDAO:
         response = 0
         try:
             sql = 'SELECT * FROM dbo.BM_USERS where UserName=?'
+            print(sql)
             cursor.execute(sql, username)
             records = cursor.fetchall()
+            print(records)
             for row in records:
-                    response = 1
-                    return response
+
+                    response = response+1
 
             return response
         except:
             ("Something went wrong.!! Contact the administrator.!")
+
+
 
     def changePassword(self, username,password):
 
