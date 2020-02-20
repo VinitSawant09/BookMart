@@ -54,15 +54,15 @@ def sendPassword():
     objdatabase = database()
     cursor = objdatabase.dbConn()
     count = userLoginDAO.checkExistingUser('',username, cursor)
-    print(count)
     objemail = email()
     if count == 1:
         password = objemail.genPassword()
         print(password)
         response = userLogin.changePassword(username, password)
         if response == 0:
-
-            objemail.sendEmail()
+            emailId = userLogin.fetchEmail(username)
+            #objemail.sendEmail(emailId)
+            print(emailId)
 
 
 

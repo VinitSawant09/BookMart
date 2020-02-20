@@ -101,26 +101,21 @@ class userLoginDAO:
         finally:
             cursor.close()
 
-    def validateUserLogin(self, data):
+    def fetchEmail(self, data):
 
-        print("inside validateUserLogin in dao")
-        username = data.get('username')
+        print("inside fetchEmail in dao")
 
-        password = data.get('password')
-
-        response=1
+        response = ''
         try:
             objdatabase = database()
             cursor = objdatabase.dbConn()
-            sql = 'SELECT * FROM dbo.BM_USERS where UserName=?'
-            cursor.execute(sql, username)
+            sql = 'SELECT Email FROM dbo.BM_USERS where UserName=?'
+            cursor.execute(sql, data)
             records = cursor.fetchall()
             print(records)
-            for row in records:
-                if row[2] == password:
-                    response=0
 
-                    return response
+            for row in records:
+                response = row[6]
 
             return response
         except:
