@@ -71,7 +71,15 @@ span.psw {
 .errorDiv
 {
 	color:red;
+	  font-weight: bold;
 	margin-left: 68px;
+}
+.errorDivAddBooks
+{
+	color: red;
+    font-weight: bold;
+    margin-left: 30%;
+}
 }
 
 /* Change styles for span and cancel button on extra small screens */
@@ -458,10 +466,9 @@ border: 3px solid #f1f1f1;
   box-sizing: border-box;
 }
 
-#addbookbtn  {
 
-element.style {
-}
+
+
 #addbookbtn {
     background-color: #737373;
     color: white;
