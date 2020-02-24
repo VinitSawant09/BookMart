@@ -3,12 +3,12 @@ from dao.userLoginDAO import userLoginDAO as userLoginDAO
 class userLogin:
 
 
-    def validateUserLogin (data):
+    def validateUserLogin (data,session):
 
          print("inside validateUserLogin")
          luserLoginDAO = userLoginDAO()
 
-         val = luserLoginDAO.validateUserLogin(data)
+         val = luserLoginDAO.validateUserLogin(data,session)
 
          return val
 

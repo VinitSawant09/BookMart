@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='/css/changepw.css') }}">
+    <script src="{{ url_for('static', filename='/js/login.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="header">
+
+    	<div class="logoheader">
+
+			<img class="od_header_icon_img" rel="shortcut icon" src="{{ url_for('static', filename='/img/icon.png') }}" />
+
+    		<span class="logo">Book Mart</span>
+
+   		</div>
+
+   			<div class="meta-nav">
+   				<div class="main_nav">
+    				<a class="navi" onclick="goHome()">Home</a>
+
+    				<a class="navi" onclick="transac()">Transactions</a>
+
+                    <a class="navi" onclick="clkChangePw()">Change Password</a>
+
+   					 <a onclick="logout()" class ="navi" >Logout</a>
+
+   					 <span class="username">Hello Admin {{username}}  .!</span>
+    			</div>
+    		</div>
+
+
+    </div>
+<br>
+<div id="changePassword"  style="display:none">
+<form method="post" class="formpw">
+<div class="pwcontainerlogin">
+
+    <label ><b style="margin-left: -30px">Old Password :&nbsp; </b></label>
+    <input type="password" placeholder="Enter Old Password" name="password" id ="password" onblur="return checkPassword();" required>
+     <br>
+    <label ><b style="margin-left: -30px">New Password : </b></label>
+    <input type="password" placeholder="Enter New Password" name="repassword" id ="repassword" required>
+    <div id ="errorDiv" class ="errorDiv" style="
+    margin-left: -30px;
+      ">
+
+    </div>
+    <button type="button" onClick="return changePassword();" >Change Password</button>
+
+  </div>
+</form>
+</div>
+
+<!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">Book Mart - an <br> <i>HEAVEN FOR BIBLIOPHILES </i> <br><br> Book Mart is a startup that focusses on reviving the interest of people in reading books. The site achieves to provide a wide range of books which the users can order.</p>
+          </div>
+
+
+
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+         <a href="#">BookMart</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
+
+
+</body>
+</html>

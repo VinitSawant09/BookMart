@@ -13,7 +13,7 @@ class userLoginDAO:
                                    'Trusted_Connection=yes;'
                                    )
 
-    def validateUserLogin(self, data):
+    def validateUserLogin(self, data, session):
 
         print("inside validateUserLogin in dao")
         username = data.get('username')
@@ -31,6 +31,8 @@ class userLoginDAO:
             for row in records:
                 if row[2] == password:
                     response=0
+                    session["userType"] = row[4]
+
 
                     return response
 

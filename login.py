@@ -16,18 +16,20 @@ def validateLogin():
      print("inside login")
      userdata = json.loads(request.data)
 
-     response = userLogin.validateUserLogin(userdata)
-     if response==0:
+     response = userLogin.validateUserLogin(userdata, session)
+     if response == 0:
          session["username"] = userdata.get('username')
+
      return str(response)
 
 @app.route('/home/',methods=['GET','POST'])
 def home():
      username= session['username']
      print("inside home")
-     if session["username"]=='':
+     if session["username"] == '':
          return render_template('login.html')
-
+     if session["userType"] == 'Admin':
+         return render_template('adminHome.html', username = username)
      return render_template('home.html', username = username)
 
 @app.route("/register/")
