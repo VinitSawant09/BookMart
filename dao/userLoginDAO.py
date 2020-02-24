@@ -126,3 +126,27 @@ class userLoginDAO:
             ("Something went wrong.!! Contact the administrator.!")
         finally:
             cursor.close()
+
+    def checkPassword(self, username, userdata):
+
+        print("inside checkPassword in dao")
+        password = userdata.get('password')
+
+        response = 1
+        try:
+            objdatabase = database()
+            cursor = objdatabase.dbConn()
+            sql = 'SELECT UserPassword FROM dbo.BM_USERS where UserName=?'
+            cursor.execute(sql, username)
+            records = cursor.fetchall()
+            print(records)
+            for row in records:
+                if row[0] == password:
+                    response =  0
+                    return response
+
+            return response
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()

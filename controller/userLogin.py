@@ -3,7 +3,6 @@ from dao.userLoginDAO import userLoginDAO as userLoginDAO
 class userLogin:
 
 
-
     def validateUserLogin (data):
 
          print("inside validateUserLogin")
@@ -24,9 +23,10 @@ class userLogin:
 
     def changePassword (username,password):
 
-         print("inside registerUser")
+         print("inside changePassword")
          luserLoginDAO = userLoginDAO()
-
+         print(password)
+         print(username)
          val = luserLoginDAO.changePassword(username,password)
 
          return val
@@ -39,4 +39,5 @@ class userLogin:
          val = luserLoginDAO.fetchEmail(data)
 
          return val
+
 

@@ -87,6 +87,30 @@ def checkUserName():
     return str(count)
 
 
+@app.route("/checkPassword/",methods=['POST'])
+def checkPassword():
+    print("inside checkPassword")
+    userdata = json.loads(request.data)
+    userName = session["username"]
+
+    count = 0
+
+    count = userLoginDAO.checkPassword('', userName, userdata)
+
+    return str(count)
+
+@app.route("/changePassword/",methods=['POST'])
+def changePassword():
+    print("inside changePassword")
+    userdata = json.loads(request.data)
+    userName = session["username"]
+    password = userdata.get('password')
+    count = 0
+
+    count = userLogin.changePassword(userName, password)
+
+    return str(count)
+
 if __name__ == '__main__':
     app.secret_key = 'namonamo'
     app.config['SESSION_TYPE'] = 'filesystem'

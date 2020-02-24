@@ -207,3 +207,83 @@ function signUp()
      }
 
 }
+
+function changePassword()
+{
+document.getElementById("errorDiv").innerHTML="";
+var password=document.getElementById("password").value;
+var newPassword= document.getElementById("repassword").value;
+
+if(password==newPassword)
+{
+document.getElementById("errorDiv").innerHTML="Old password is same as new password";
+return false;
+}
+else
+{
+         formData= {
+        "password":newPassword,
+        }
+      $.ajax(
+       {
+        url  : "/changePassword/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response==0)
+        {
+          document.getElementById("errorDiv").innerHTML="Password changed sucessfully.!";
+        }
+        else if (response==1)
+        {
+          document.getElementById("errorDiv").innerHTML="Password not changed.!";
+        }
+        }
+       });
+
+  }
+
+}
+
+
+function checkPassword()
+{
+ var password=document.getElementById("password").value;
+ document.getElementById("errorDiv").innerHTML="";
+      formData= {
+        "password":password
+      }
+      $.ajax(
+       {
+        url  : "/checkPassword/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!=0)
+        {
+          document.getElementById("errorDiv").innerHTML="Password doesn't match.!";
+          return false;
+        }
+
+        }
+       });
+    return true;
+
+}
+
+function clkChangePw()
+{
+
+document.getElementById("changePassword").style.display = 'block';
+
+}
