@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
      <link rel="stylesheet" href="{{ url_for('static', filename='/css/changepw.css') }}">
     <script src="{{ url_for('static', filename='/js/login.js') }}"></script>
+     <script src="{{ url_for('static', filename='/js/admin.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
@@ -22,7 +23,7 @@
 
    			<div class="meta-nav">
    				<div class="main_nav">
-    				<a class="navi" onclick="goHome()">Home</a>
+    				<a class="navi" onclick="addBooks()">Add Books</a>
 
     				<a class="navi" onclick="transac()">Transactions</a>
 
@@ -56,6 +57,37 @@
   </div>
 </form>
 </div>
+
+<div class ="addBooks" id ="addBooks" style="display:none">
+<form class="addBooksForm">
+     <label ><b style="margin-left: 10px">Book Title :&nbsp; </b></label>
+    <input type="text" placeholder="Enter Book Title" name="booktitle" maxlength="50"  id ="booktitle" onblur="" required>
+     <br>
+    <label ><b style="margin-left: 10px">Author/s : &nbsp;  &nbsp;</b></label>
+    <input type="text" placeholder="Enter Author Name" name="author" maxlength="50" id ="author" required>
+  <br>
+    <label ><b style="margin-left: 10px">Book Details : &nbsp; </b></label>
+    <input type="text" placeholder="Enter Book Description" name="desc" maxlength="500" id ="desc" required>
+
+    <br>
+     <label ><b style="margin-left: 10px">Cost : &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;</b></label>
+    <input type="text" placeholder="Enter Book cost" name="cost" maxlength="4" id ="cost" required>
+  <br>
+     <label ><b style="margin-left: 10px">Year : &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; </b></label>
+    <input type="text" placeholder="Enter Book year" name="year"  maxlength="4" id ="year" required>
+  <br>
+
+   <label ><b style="margin-left: 10px">Select Image : </b></label>
+  <input type="file" id="img" name="img" accept="image/*">
+    <br>
+    <button type="button" id="addbookbtn"> Add Book </button>
+    <div id ="errorDivAddBooks" class ="errorDiv" style="
+    margin-left: -30px;
+      ">
+    </div>
+</form>
+</div>
+
 
 <!-- Site footer -->
     <footer class="site-footer">

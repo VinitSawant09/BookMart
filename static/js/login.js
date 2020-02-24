@@ -283,7 +283,7 @@ function checkPassword()
 
 function clkChangePw()
 {
-
+document.getElementById("addBooks").style.display = 'none';
 document.getElementById("changePassword").style.display = 'block';
 
 }
