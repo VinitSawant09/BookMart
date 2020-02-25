@@ -132,7 +132,7 @@ def addBooks():
 
 @app.route("/upload", methods=["GET","POST"])
 def upload():
-    if request.method == 'POST':
+    if request.method == 'POST' and session["username"] == '':
 
         title = request.form['title']
         print(title)
@@ -167,7 +167,6 @@ def upload():
             print(filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], str(response)+ ".jpg"))
 
-    flash('Book Added successfully.!')
     return render_template('adminHome.html')
 
 
