@@ -5,9 +5,10 @@
     <title>Title</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
      <link rel="stylesheet" href="{{ url_for('static', filename='/css/changepw.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='/js/login.js') }}"></script>
      <script src="{{ url_for('static', filename='/js/admin.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -59,9 +60,9 @@
 </div>
 
 <div class ="addBooks" id ="addBooks" style="display:none">
-<form class="addBooksForm" id ="addBooksForm">
+<form class="addBooksForm" action="{{url_for('upload')}}" method="post" id ="addBooksForm" enctype="multipart/form-data">
      <label ><b style="margin-left: 10px">Book Title :&nbsp; </b></label>
-    <input type="text" placeholder="Enter Book Title" name="booktitle" maxlength="50"  id ="booktitle" onblur="" required>
+    <input type="text" placeholder="Enter Book Title" name="title" maxlength="50"  id ="title" onblur="" required>
      <br>
     <label ><b style="margin-left: 10px">Author/s : &nbsp;  &nbsp;</b></label>
     <input type="text" placeholder="Enter Author Name" name="author" maxlength="50" id ="author" required>
@@ -78,13 +79,17 @@
   <br>
   <br>
    <label ><b style="margin-left: 10px">Select Image : &nbsp;  </b></label>
-  <input type="file" id="img" name="img" accept="image/x-png,image/gif,image/jpeg">
+  <input type="file" id="img" name="file" accept="image/">
+
     <br>
-    <button type="button" id="addbookbtn" onclick="addBook()"> Add Book </button>
-    <div id ="errorDivAddBooks" class ="errorDivAddBooks"
-      >
+    <input type="submit" id="addbookbtn"> Add Book </input>
+    <!--onclick="addBook()"-->
+    <div id ="errorDivAddBooks" class ="errorDivAddBooks">
     </div>
 </form>
+    <form action="{{url_for('upload')}}" method="post" enctype="multipart/form-data">
+<input type="file" name="file" accept="image/" />
+<input type="submit"  /></form>
 </div>
 
 

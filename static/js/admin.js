@@ -6,13 +6,20 @@ document.getElementById("addBooks").style.display = 'block';
 
 function addBookValid()
 {
- document.getElementById("errorDivAddBooks").innerHTML = '';
+document.getElementById("errorDivAddBooks").innerHTML = '';
 var title = document.getElementById("booktitle").value;
 var author =  document.getElementById("author").value;
 var desc =  document.getElementById("desc").value;
 var year = document.getElementById("year").value;
 var cost = document.getElementById("cost").value;
-  var image =  document.getElementById("img").value;
+ var image =  document.getElementById("img").value;
+// var imgdata = document.getElementById('img').files[0];
+// var imgdataRaw = $('#addBooksForm')[5];
+var form_data = new FormData($("#addBooksForm")[5]);
+
+
+ alert(form_data)
+
 if(title=='' || author ==''|| desc=='' || year==''|| cost =='' || image =='' )
 {
 
@@ -24,7 +31,40 @@ else if( ValidateImg()==false )
 {
 document.getElementById("errorDivAddBooks").innerHTML = 'Uploaded file is not an image.!';
 }
-return true;
+
+else
+{
+formData= {
+        "title":title,
+        "author":author,
+        "desc":desc,
+        "year":year,
+        "cost":cost,
+        "image":image
+      }
+      $.ajax(
+       {
+        url  : "/addBooks/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response==0)
+        {
+         alert("Book Inserted");
+        }
+        else
+        {
+          alert("Book not Inserted");
+        }
+
+        }
+       });
+}
 
 }
 
