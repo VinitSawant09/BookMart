@@ -219,9 +219,9 @@ def upload():
         response = adminController.addBooks(title, author, desc, cost, year, newstr)
         print(response)
         os.remove(os.path.join(app.config['UPLOAD_FOLDER'], "image.jpg"))
-        filename = 'some_image.jpg'  # I assume you have a way of picking unique filenames
-        with open(filename, 'wb') as f:
-            f.write(dec)
+    #    filename = 'some_image.jpg'  # I assume you have a way of picking unique filenames
+     #   with open(filename, 'wb') as f:
+        #    f.write(dec)
     return render_template('adminHome.html')
 
 
