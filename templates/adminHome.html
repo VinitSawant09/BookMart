@@ -59,8 +59,9 @@
 </form>
 </div>
 
-<div class ="addBooks" id ="addBooks" style="display:none">
-<form class="addBooksForm" action="{{url_for('upload')}}" method="post" id ="addBooksForm" enctype="multipart/form-data">
+<div class ="addBooks" id ="addBooks"  style="display:none">
+    <!-- action="{{url_for('upload')}}" method="post" -->
+<form class="addBooksForm"  id ="addBooksForm" action="{{url_for('upload')}}" method="post" enctype="multipart/form-data">
      <label ><b style="margin-left: 10px">Book Title :&nbsp; </b></label>
     <input type="text" placeholder="Enter Book Title" name="title" maxlength="50"  id ="title" onblur="" required>
      <br>

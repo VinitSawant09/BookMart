@@ -1,6 +1,7 @@
 from flask import *
 from flask import flash
 import os
+import base64
 from controller.userLogin import userLogin as userLogin
 from controller.adminController import adminController as adminController
 import json
@@ -127,12 +128,42 @@ def addBooks():
      print("inside addBooks")
      userdata = json.loads(request.data)
      print(userdata)
-     response = adminController.addBooks(userdata)
-     return response
+     title=userdata.get('username')
+     author = userdata.get('author')
+     cost = userdata.get('cost')
+     desc = userdata.get('desc')
+     year = userdata.get('year')
+     image = userdata.get('image')
+     fname = userdata.get('fname')
+
+     response = adminController.addBooks(title, author, desc, cost, year)
+
+     # check if the post request has the file part
+     if 'file' not in image:
+         flash('No file part')
+         print("first if")
+         return redirect(request.url)
+     file = image
+     # if user does not select file, browser also
+     # submit an empty part without filename
+     if fname == '':
+         flash('No selected file')
+         print("second if")
+         return redirect(request.url)
+     if file and allowed_file(fname):
+         print("third if")
+
+         filename = secure_filename(fname)
+         print(fname)
+         file.save(os.path.join(app.config['UPLOAD_FOLDER'], str(response) + ".jpg"))
+     return render_template('adminHome.html')
 
 @app.route("/upload", methods=["GET","POST"])
 def upload():
-    if request.method == 'POST' and session["username"] == '':
+    print("inside upload")
+
+
+    if request.method == 'POST' and session["username"] != '':
 
         title = request.form['title']
         print(title)
@@ -144,8 +175,9 @@ def upload():
         print(cost)
         year = request.form['year']
         print(year)
+        file = request.files['file']
+       # response = adminController.addBooks(title, author, desc, cost, year)
 
-        response = adminController.addBooks(title, author, desc, cost, year)
 
 
         # check if the post request has the file part
@@ -154,6 +186,7 @@ def upload():
             print("first if")
             return redirect(request.url)
         file = request.files['file']
+
         # if user does not select file, browser also
         # submit an empty part without filename
         if file.filename == '':
@@ -162,11 +195,33 @@ def upload():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             print("third if")
-
             filename = secure_filename(file.filename)
             print(filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], str(response)+ ".jpg"))
+            #response = adminController.addBooks(title, author, desc, cost, year, file)
+            #print(response)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], "image" + ".jpg"))
 
+        with open('./books/image.jpg', "rb") as imageFile:
+            #str = base64.b64encode(imageFile.read())
+            strb64 = base64.b64encode(imageFile.read())
+            newstr =strb64.decode("utf-8")
+        print(newstr)
+        print(str(newstr))
+        dec = base64.b64decode(str(newstr))
+        print(str(dec))
+
+
+        #print(base64.encodebytes(newstr))
+
+    #    fileStr=str[2:-1]
+    #   print(fileStr)
+
+        response = adminController.addBooks(title, author, desc, cost, year, newstr)
+        print(response)
+        os.remove(os.path.join(app.config['UPLOAD_FOLDER'], "image.jpg"))
+        filename = 'some_image.jpg'  # I assume you have a way of picking unique filenames
+        with open(filename, 'wb') as f:
+            f.write(dec)
     return render_template('adminHome.html')
 
 

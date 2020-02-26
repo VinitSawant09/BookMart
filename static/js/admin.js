@@ -7,18 +7,20 @@ document.getElementById("addBooks").style.display = 'block';
 function addBookValid()
 {
 document.getElementById("errorDivAddBooks").innerHTML = '';
-var title = document.getElementById("booktitle").value;
+var title = document.getElementById("title").value;
 var author =  document.getElementById("author").value;
 var desc =  document.getElementById("desc").value;
 var year = document.getElementById("year").value;
 var cost = document.getElementById("cost").value;
- var image =  document.getElementById("img").value;
-// var imgdata = document.getElementById('img').files[0];
-// var imgdataRaw = $('#addBooksForm')[5];
-var form_data = new FormData($("#addBooksForm")[5]);
+var image =  document.getElementById("img").value;
 
+const selectedFile = document.getElementById('img').files[0];
+alert(selectedFile.size)
+alert(selectedFile.type)
+var formData = new FormData()
+formData.append('file',selectedFile)
 
- alert(form_data)
+var fname = document.getElementById('img').files[0].name;
 
 if(title=='' || author ==''|| desc=='' || year==''|| cost =='' || image =='' )
 {
@@ -40,7 +42,8 @@ formData= {
         "desc":desc,
         "year":year,
         "cost":cost,
-        "image":image
+        "image":formData,
+        "fname": fname
       }
       $.ajax(
        {
