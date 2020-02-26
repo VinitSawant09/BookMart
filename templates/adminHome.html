@@ -61,7 +61,7 @@
 
 <div class ="addBooks" id ="addBooks"  style="display:none">
     <!-- action="{{url_for('upload')}}" method="post" -->
-<form class="addBooksForm"  id ="addBooksForm" action="{{url_for('upload')}}" method="post" enctype="multipart/form-data">
+<form class="addBooksForm"  id ="addBooksForm" action="{{url_for('upload')}}" onsubmit="return addBook()" method="post" enctype="multipart/form-data">
      <label ><b style="margin-left: 10px">Book Title :&nbsp; </b></label>
     <input type="text" placeholder="Enter Book Title" name="title" maxlength="50"  id ="title" onblur="" required>
      <br>
@@ -83,14 +83,12 @@
   <input type="file" id="img" name="file" accept="image/">
 
     <br>
-    <input type="submit" id="addbookbtn"> Add Book </input>
+    <input type="submit" id="addbookbtn">  </input>
     <!--onclick="addBook()"-->
     <div id ="errorDivAddBooks" class ="errorDivAddBooks">
     </div>
 </form>
-    <form action="{{url_for('upload')}}" method="post" enctype="multipart/form-data">
-<input type="file" name="file" accept="image/" />
-<input type="submit"  /></form>
+
 </div>
 
 

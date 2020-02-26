@@ -13,14 +13,14 @@ var desc =  document.getElementById("desc").value;
 var year = document.getElementById("year").value;
 var cost = document.getElementById("cost").value;
 var image =  document.getElementById("img").value;
-
+/*
 const selectedFile = document.getElementById('img').files[0];
 alert(selectedFile.size)
 alert(selectedFile.type)
 var formData = new FormData()
 formData.append('file',selectedFile)
-
-var fname = document.getElementById('img').files[0].name;
+*/
+//var fname = document.getElementById('img').files[0].name;
 
 if(title=='' || author ==''|| desc=='' || year==''|| cost =='' || image =='' )
 {
@@ -32,8 +32,9 @@ if(title=='' || author ==''|| desc=='' || year==''|| cost =='' || image =='' )
 else if( ValidateImg()==false )
 {
 document.getElementById("errorDivAddBooks").innerHTML = 'Uploaded file is not an image.!';
+return false;
 }
-
+/*
 else
 {
 formData= {
@@ -67,7 +68,7 @@ formData= {
 
         }
        });
-}
+}*/
 
 }
 
