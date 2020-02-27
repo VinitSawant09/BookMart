@@ -229,8 +229,32 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
+@app.route("/getAllBooks/", methods=['POST'])
+def getAllBooks():
+    print("inside getAllBooks")
+
+    count = 0
+
+    count = userLoginDAO.getAllBooks('')
+    print("Book Count =", session["bookcount"])
+    return str(count)
+
+@app.route("/getUserCount/", methods=['POST'])
+def getUserCount():
+    print("inside getUserCount")
+
+    count = 0
+
+    count = userLoginDAO.getUserCount('')
+    session["usercount"] = count
+    print("User Count =", session["usercount"])
+    return str(count)
+
+
 if __name__ == '__main__':
     app.secret_key = 'namonamo'
     app.config['SESSION_TYPE'] = 'filesystem'
 
     app.run(debug=True)
+

@@ -1,6 +1,7 @@
 from datetime import date
 
 import pyodbc
+from flask import session
 
 from dao.db import dataBase as database
 
@@ -152,3 +153,51 @@ class userLoginDAO:
             ("Something went wrong.!! Contact the administrator.!")
         finally:
             cursor.close()
+
+    def getAllBooks(self):
+
+        print("inside getAllBooks in dao")
+
+        response = []
+
+        try:
+            objdatabase = database()
+            cursor = objdatabase.dbConn()
+            sql = 'SELECT BOOKID, TITLE, AUTHOR, BOOK_DESCRIPTION, COST, P_YEAR, IMAGE  FROM dbo.BM_BOOKS'
+            cursor.execute(sql)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response.append(row)
+            print(len(response))
+            session["bookcount"] = len(response)
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response
+
+    def getUserCount(self):
+
+        print("inside getUserCount in dao")
+
+        count =0
+
+        try:
+            objdatabase = database()
+            cursor = objdatabase.dbConn()
+            sql = 'select COUNT(*) from  dbo.BM_USERS where USERTYPE=\'User\''
+            cursor.execute(sql)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                count = row[0]
+            print(count)
+
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return count
