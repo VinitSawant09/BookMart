@@ -281,6 +281,14 @@ function checkPassword()
 
 }
 
+function clkChangePwUser()
+{
+
+document.getElementById("changePassword").style.display = 'block';
+document.getElementById("search-car-details").style.display = 'none';
+
+}
+
 function clkChangePw()
 {
 document.getElementById("addBooks").style.display = 'none';

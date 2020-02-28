@@ -10,8 +10,7 @@
   var featuredCarList=[];
 function myFunction()
 {
-var authors=[];
-var years=[];
+
 
 $.ajax(
        {
@@ -28,14 +27,16 @@ $.ajax(
         console.log(entireData)
         var $sectionId = $("#search-car")
         count=entireData.length;
+        var authors=[];
+        var years=[];
         /* Fetching all unique data */
 	         	 var j=0;
 	             for (i = 0; i < count; i++)
 	             {
 
 
-	            			authors[j]=entireData[i][2];
-	            			years[j]=entireData[i][5];
+	            			authors[j]=response[i][2];
+	            			years[j]=response[i][5];
 
 	            		    j++;
 	              }
@@ -54,15 +55,15 @@ $.ajax(
          		 });
 
                  // populating the various dropdowns
-	             var $carBrandsDD= $("#carBrands");
-	             for (var i=0; i< uniqueCarBrands.length ;i++ )
+	             var $authorsLDD= $("#authorsL");
+	             for (var i=0; i< authors.length ;i++ )
 	            	 {
-	            	 $carBrandsDD.append($("<option />").val(uniqueCarBrands[i]).text(uniqueCarBrands[i]));
+	            	 $authorsLDD.append($("<option />").val(authors[i]).text(authors[i]));
 
 	            	 }
 
                  years.sort();
-	             var $yearsDD= $("#years");
+	             var $yearsDD= $("#yearsL");
 	             for (var i=0; i< years.length ;i++ )
 	            	 {
 	            	 $yearsDD.append($("<option />").val(years[i]).text(years[i]));

@@ -31,7 +31,7 @@
 
     				<a class="navi" onclick="transac()">Transactions</a>
 
-                    <a class="navi" onclick="clkChangePw()">Change Password</a>
+                    <a class="navi" onclick="clkChangePwUser()">Change Password</a>
 
    					 <a onclick="logout()" class ="navi" >Logout</a>
 
@@ -41,6 +41,43 @@
 
 
     </div>
+
+
+<div class="drop-down-container" id="dropdown_1">
+		<ul>
+			<li><select id="authorsL">
+					<option value="Authors"> All Authors</option>
+			</select></li>
+
+			<li><select id="yearsL">
+					<option value="Years"> All Years</option>
+			</select></li>
+
+			<li><select id="minPrice">
+					<option value="0">Min Cost</option>
+					<option value="5">5</option>
+					<option value="10">10</option>
+			</select></li>
+
+			<li><select id="maxPrice">
+					<option value="0">Max Cost</option>
+					<option value="10">10</option>
+					<option value="20">20</option>
+					<option value="30">30</option>
+
+			</select></li>
+			<li><button type="button" id="search" value="Search">FIND
+					BOOKS</button></li>
+		</ul>
+	</div>
+
+
+
+<div class="search-car-list" id="search-car-details">
+		<section id="search-car" class="regular slider"></section>
+	</div>
+
+	<div class="noresult" id="noresult" style="display: none"></div>
 
 <div id="changePassword"  style="display:none">
     <br>
@@ -57,46 +94,11 @@
       ">
 
     </div>
-    <button type="button" onClick="return changePassword();" >Change Password</button>
+    <button type="button" class="btnform" onClick="return changePassword();" >Change Password</button>
 
   </div>
 </form>
 </div>
-<div class="drop-down-container" id="dropdown_1">
-		<ul>
-			<li><select id="authorsL">
-					<option value="Authors">Authors</option>
-			</select></li>
-
-			<li><select id="yearsL">
-					<option value="Years">Years</option>
-			</select></li>
-
-			<li><select id="minPrice">
-					<option value="0">Min Cost</option>
-					<option value="50000">50000</option>
-					<option value="100000">100000</option>
-			</select></li>
-
-			<li><select id="maxPrice">
-					<option value="0">Max Cost</option>
-					<option value="200000">200000</option>
-					<option value="500000">500000</option>
-					<option value="1500000">1500000</option>
-
-			</select></li>
-			<li><button type="button" id="search" value="Search">FIND
-					VEHICLES</button></li>
-		</ul>
-	</div>
-
-
-
-<div class="search-car-list" id="search-car-details">
-		<section id="search-car" class="regular slider"></section>
-	</div>
-
-	<div class="noresult" id="noresult" style="display: none"></div>
 
 
 <!-- Site footer -->
