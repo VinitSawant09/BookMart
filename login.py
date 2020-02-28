@@ -238,7 +238,8 @@ def getAllBooks():
 
     count = userLoginDAO.getAllBooks('')
     print("Book Count =", session["bookcount"])
-    return str(count)
+
+    return jsonify(count)
 
 @app.route("/getUserCount/", methods=['POST'])
 def getUserCount():

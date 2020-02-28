@@ -168,7 +168,9 @@ class userLoginDAO:
             rowlist = cursor.fetchall()
 
             for row in rowlist:
-                response.append(row)
+                #response.append(row)
+
+                response.append([x for x in row])
             print(len(response))
             session["bookcount"] = len(response)
 
