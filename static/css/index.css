@@ -158,7 +158,8 @@
 .noresult
 {
 	font-size: 3em;
-    margin-left: 37%;
+    /* margin-left: 37%; */
+    color: white;
 	
 }
 
