@@ -403,3 +403,26 @@ function goHome()
 
 window.location.href ='/home/';
 }
+
+function openForm()
+ {
+   document.getElementById("open-button").style.display = "none";
+   document.getElementById("myForm").style.display = "block";
+   document.getElementById("email").value="";
+   document.getElementById("name").value="";
+   document.getElementById("carmodel").value=selectedCar;
+   document.getElementById("contactnumber").value="";
+ }
+
+function closeForm()
+ {
+
+	 document.getElementById("open-button").style.display = "";
+	   document.getElementById("myForm").style.display = "none";
+	   document.getElementById("email").value="";
+	   document.getElementById("name").value="";
+	   document.getElementById("carmodel").value="";
+	   document.getElementById("contactnumber").value="";
+
+
+ }
