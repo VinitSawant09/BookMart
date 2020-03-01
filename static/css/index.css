@@ -344,9 +344,8 @@
 /* The expanding image container */
 .container {
  /* position: relative;*/
-  display: none;
  margin-right: 25%;
-    width: 55%;
+    width: 30%;
 }
 
 /* Expanding image text */

@@ -318,13 +318,36 @@ $.ajax(
                     $('.slick-slide').on('click', function(ev)
 	           			{
 	           			       console.log("clicked.!!");
-	           		           index=$(ev.currentTarget).data('slick-index')
-	           		           console.log(index);
-	           		           console.log(finalData[index]);
+	           		           index=$(ev.currentTarget).data('slick-index');
 
+	           		           if(finalData.length<=index)
+	           		           {
+	           		              index=index-finalData.length;
+	           		              console.log(index);
+	           		              console.log(finalData[index]);
+	           		           }
+	           		           else
+	           		           {
+	           		             console.log(finalData[index]);
 
+	           		           }
+                              var expandImg = document.getElementById("expandedImg");
+                              var imgText = document.getElementById("imgtext");
+                              document.getElementById("selected-book-details").style.display = "block";
+                              document.getElementById("carDet").style.display = "";
+                              document.getElementById("open-button").style.display = "";
 
+                               document.getElementById("bookName").innerHTML="hello";
+                              document.getElementById("bookAuthor").innerHTML="tada";
+                              document.getElementById("bookPrice").innerHTML="";
+                              document.getElementById("bookYear").innerHTML="";
 
+                               expandImg.src = "data:image/jpg;base64, "+ finalData[index][6];
+                         //         imgText.innerHTML = imgs.alt;
+                                  expandImg.parentElement.style.display = "block";
+                                  $('html, body').animate({
+  	                                 scrollTop: $("#expandedImg").offset().top
+  	                                 }, 700);
 
 
 	           		     });
@@ -346,5 +369,30 @@ $.ajax(
 
 
 
+
+}
+
+//block keyboard buttons
+ function blockSpecialCharAndAlpha(e)
+ {
+         var k;
+         document.all ? k = e.keyCode : k = e.which;
+         return ( k == 8 || (k >= 48 && k <= 57));
+ }
+
+ function blockSpecialCharAndNumbers(e)
+ {
+        var k;
+         document.all ? k = e.keyCode : k = e.which;
+         return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || k==39 );
+ }
+
+function redirectAboutUs()
+{
+
+   
+    $('html, body').animate({
+        scrollTop: $("#About-us").offset().top
+    }, 1000);
 
 }
