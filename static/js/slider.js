@@ -337,10 +337,11 @@ $.ajax(
                               document.getElementById("carDet").style.display = "";
                               document.getElementById("open-button").style.display = "";
 
-                               document.getElementById("bookName").innerHTML="hello";
-                              document.getElementById("bookAuthor").innerHTML="tada";
-                              document.getElementById("bookPrice").innerHTML="";
-                              document.getElementById("bookYear").innerHTML="";
+                               document.getElementById("bookName").innerHTML="Name : "+finalData[index][1];
+                              document.getElementById("bookAuthor").innerHTML="Author : "+finalData[index][2];
+                              document.getElementById("bookPrice").innerHTML="Price : "+finalData[index][4] + " Euros";
+                              document.getElementById("bookYear").innerHTML="Year : "+finalData[index][5] ;
+                              document.getElementById("about").innerHTML="About : "+finalData[index][3] ;
 
                                expandImg.src = "data:image/jpg;base64, "+ finalData[index][6];
                          //         imgText.innerHTML = imgs.alt;
@@ -390,9 +391,15 @@ $.ajax(
 function redirectAboutUs()
 {
 
-   
+
     $('html, body').animate({
         scrollTop: $("#About-us").offset().top
     }, 1000);
 
+}
+
+function goHome()
+{
+
+window.location.href ='/home/';
 }

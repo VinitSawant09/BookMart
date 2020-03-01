@@ -520,13 +520,14 @@ margin-left: 4%;
 
 .carDet
 {
-	width: 30%;
-    margin-left: 46em;
-    margin-top: -22em;
+	width: 100%;
+    margin-left: 35em;
+    margin-top: -32em;
     margin-bottom: 10em;
     font-family: Trebuchet MS;
     font-weight: 1000;
     font-size: 1em;
+    color: white;
 }
 
 /* Media query start*/

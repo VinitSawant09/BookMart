@@ -284,6 +284,10 @@ function checkPassword()
 function clkChangePwUser()
 {
 
+document.getElementById("dropdown_1").style.display = "none";
+document.getElementById("selected-book-details").style.display = "none";
+document.getElementById("carDet").style.display = "none";
+document.getElementById("open-button").style.display = "none";
 document.getElementById("changePassword").style.display = 'block';
 document.getElementById("search-car-details").style.display = 'none';
 
