@@ -337,7 +337,7 @@ $.ajax(
                               document.getElementById("carDet").style.display = "";
                               document.getElementById("open-button").style.display = "";
 
-                               document.getElementById("bookName").innerHTML="Name : "+finalData[index][1];
+                               document.getElementById("bookName").innerHTML=finalData[index][1];
                               document.getElementById("bookAuthor").innerHTML="Author : "+finalData[index][2];
                               document.getElementById("bookPrice").innerHTML="Price : "+finalData[index][4] + " Euros";
                               document.getElementById("bookYear").innerHTML="Year : "+finalData[index][5] ;
@@ -363,14 +363,6 @@ $.ajax(
                     */
 
 	             });
-
-
-
-
-
-
-
-
 }
 
 //block keyboard buttons
@@ -408,9 +400,9 @@ function openForm()
  {
    document.getElementById("open-button").style.display = "none";
    document.getElementById("myForm").style.display = "block";
-   document.getElementById("email").value="";
    document.getElementById("name").value="";
-   document.getElementById("carmodel").value=selectedCar;
+    var title= document.getElementById("bookName").innerHTML;
+   document.getElementById("bookmodel").value= title.replace(/&amp;/g, '&');
    document.getElementById("contactnumber").value="";
  }
 
@@ -419,10 +411,87 @@ function closeForm()
 
 	 document.getElementById("open-button").style.display = "";
 	   document.getElementById("myForm").style.display = "none";
-	   document.getElementById("email").value="";
 	   document.getElementById("name").value="";
-	   document.getElementById("carmodel").value="";
+	   document.getElementById("bookmodel").value = "";
 	   document.getElementById("contactnumber").value="";
+	   document.getElementById("nameerror").innerHTML="";
+	    document.getElementById("contactnumbererror").innerHTML="";
+	    document.getElementById("addresserror").innerHTML="";
 
 
  }
+
+
+ //validate name functionality
+ function validateName()
+ {
+  var name = document.getElementById("name").value;
+
+
+    if(name == "" || name== null)
+    {
+      document.getElementById("nameerror").innerHTML="Name cannot be blank";
+      return false;
+    }
+    else
+    {
+     document.getElementById("nameerror").innerHTML="";
+     return true;
+    }
+ }
+
+//validate phone functionality
+ function validatephno()
+ {
+     var cno = document.getElementById("contactnumber").value;
+
+     if(isNaN(parseFloat(cno)) || cno<1)
+     {
+       document.getElementById("contactnumbererror").innerHTML="Invalid number";
+       return false;
+     }
+     else
+     {
+
+        document.getElementById("contactnumbererror").innerHTML="";
+        return true;
+     }
+ }
+
+ function validateAddress()
+ {
+  var addr = document.getElementById("address").value;
+
+
+    if(addr == "" || addr== null)
+    {
+      document.getElementById("addresserror").innerHTML="Address cannot be blank";
+      return false;
+    }
+    else
+    {
+     document.getElementById("addresserror").innerHTML="";
+     return true;
+    }
+ }
+
+
+ //final validation for form
+ function submitForm()
+ {
+   var name = document.getElementById("name").value;
+   var bookmodel = document.getElementById("bookmodel").value;
+   var address = document.getElementById("address").value;
+
+   if( !validateName() || !validatephno() || !validateAddress()  )
+   {
+     return false;
+   }
+
+
+  alert(name+" your details registered successfully for the book model "+ bookmodel);
+  document.getElementById("myForm").style.display = "none";
+ }
+
+
+

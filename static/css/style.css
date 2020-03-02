@@ -4,9 +4,19 @@ background-color:black;}
 
 form {
 border: 3px solid #f1f1f1;
-width: 100%;
+    width: 25%;
+    margin-left: 37.5%;
+
 
 }
+
+form.form-container
+{
+border: 3px solid #f1f1f1;
+ width: 100%;
+  margin-left: 0%;
+}
+
 
 input[type=text], input[type=password] {
   width: 50%;
@@ -26,7 +36,7 @@ button.btnform {
   border: none;
   cursor: pointer;
   width: 50%;
-    margin-left: 12%;
+   margin-left: 11%;
 }
 
 button:hover {
@@ -60,6 +70,7 @@ img.avatar {
   padding: 16px;
     width: 100%;
     margin-left: 13%;
+
 }
 
 span.psw {

@@ -390,12 +390,12 @@
 .form-popup {
   display: none;
   position: fixed;
-  bottom: 21.5%;
+
   right: 30%;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-  top:14%;
-  width:33%;
+    border: 3px solid red;
+    z-index: 9;
+    top: 5%;
+    width: 33%;
 }
 
 /* Add styles to the form container */

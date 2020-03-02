@@ -112,7 +112,10 @@
 				class="closebtn">&times;</span> <img id="expandedImg"
 				style="width: 100%">
 			<div class="carDet" id="carDet">
-			 <p id="bookName" class="bookName"></p>
+                <label ><b style="margin-left: 0px">Book Name : </b>
+                 <p id="bookName" class="bookName"></p>
+                </label>
+
 			 <br>
              <p id="bookAuthor"></p>
              <br>
@@ -135,12 +138,7 @@
 
 <div class="form-popup" id="myForm">
 			<form action="submitForm()" class="form-container">
-				<h1>Booking Details</h1>
-
-				<label for="email"><b>Email</b></label> <input type="text"
-					placeholder="Enter Email" name="email" id="email"
-					onblur="validateEmail()" maxlength="50" required>
-				<div id="emailerror" class="errormsg"></div>
+				<h2>Order Details</h2>
 
 				<label for="name"><b>Name</b></label> <input type="text"
 					placeholder="Enter Name" name="name" id="name"
@@ -149,10 +147,15 @@
 					maxlength="50" required>
 				<div id="nameerror" class="errormsg"></div>
 
-				<label for="carmodel"><b>Car Model</b></label> <input type="text"
-					placeholder="Enter Car Model" name="carmodel" id="carmodel"
-					required>
-				<div id="carmodelerror" class="errormsg"></div>
+				<label for="bookmodel"><b>Book Title </b></label> <input type="text"
+					 name="bookmodel" id="bookmodel"
+					readonly>
+				<div id="bookmodelerror" class="errormsg"></div>
+
+                <label for="address"><b>Address </b></label> <input type="text"
+					 name="address" id="address"
+					>
+				<div id="addresserror" class="errormsg"></div>
 
 				<label for="contactnumber"><b>Contact Number</b></label> <input
 					type="text" placeholder="Enter Contact Number" name="contactnumber"
@@ -165,11 +168,6 @@
 				<button type="button" onclick="closeForm()" class="btn1" id="close">Close</button>
 			</form>
 </div>
-
-
-
-
-
 
 <!-- Site footer -->
     <footer class="site-footer">
