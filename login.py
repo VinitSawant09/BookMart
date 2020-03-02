@@ -252,6 +252,19 @@ def getUserCount():
     print("User Count =", session["usercount"])
     return str(count)
 
+@app.route("/orderBook/", methods=['POST'])
+def orderBook():
+    print("inside orderBook")
+    userdata = json.loads(request.data)
+    objemail = email()
+    response = userLogin.orderBook(userdata)
+    if response == 0 :
+        username = session["username"]
+        emailId = userLogin.fetchEmail(username)
+        response = objemail.sendOrderEmail(emailId, userdata)
+    return str(response)
+
+
 
 if __name__ == '__main__':
     app.secret_key = 'namonamo'

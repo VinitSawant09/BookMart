@@ -482,7 +482,12 @@ function closeForm()
    var name = document.getElementById("name").value;
    var bookmodel = document.getElementById("bookmodel").value;
    var address = document.getElementById("address").value;
+   var cno = document.getElementById("contactnumber").value;
 
+   var price = document.getElementById("bookPrice").innerHTML;
+   price =price.replace("Price :", "")
+   price = price.replace("Euros", "")
+   alert(price)
    if( !validateName() || !validatephno() || !validateAddress()  )
    {
      return false;
@@ -491,6 +496,42 @@ function closeForm()
 
   alert(name+" your details registered successfully for the book model "+ bookmodel);
   document.getElementById("myForm").style.display = "none";
+      formData= {
+           "bookname": bookmodel,
+            "recvName": name,
+            "addr": address,
+            "phno":  cno,
+            "price":price
+        }
+
+
+    $.ajax(
+       {
+        url  : "/orderBook/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response==0)
+        {
+
+          window.location.href =' /home/';
+
+        }
+        else
+        {
+         alert("Transaction failed.!")
+        }
+        }
+       });
+
+
+
+
  }
 
 

@@ -1,4 +1,5 @@
 from datetime import date
+import time
 
 import pyodbc
 from flask import session
@@ -203,3 +204,28 @@ class userLoginDAO:
         finally:
             cursor.close()
         return count
+
+    def orderBook(self, data):
+
+        print("inside orderBook in dao")
+        bookname = data.get('bookname')
+
+        userName = session["username"]
+        recvName = data.get('recvName')
+        addr = data.get('addr')
+        phno = data.get('phno')
+        price = data.get('price')
+
+        db = database()
+        cursor = db.insertdbConn(self.conn)
+        try:
+
+                sql = 'insert into dbo.BM_TRANSACTION (TRANSACTIONID,USERNAME,BOOKNAME,ADDR,PHNO,TRANSACTIONTIME,RECEIVERNAME,PRICE) values(next value for dbo.SEQ_TRANSAC_ID,?,?,?,?,GETDATE(),?,?)'
+                with self.conn as cursor:
+                    print("execute")
+                    cursor.execute(sql, userName, bookname, addr, phno, recvName, price)
+                return 0
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()

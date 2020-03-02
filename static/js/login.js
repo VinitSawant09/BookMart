@@ -193,8 +193,8 @@ function signUp()
 
         if (response==0)
         {
-          window.location.href ='/';
-          document.getElementById("errorDiv").innerHTML="Registered Succesfully.!";
+          window.location.href ='/home';
+
         }
         else if (response==1)
         {
