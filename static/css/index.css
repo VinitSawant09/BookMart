@@ -721,6 +721,12 @@ margin-left: 4%;
     width: 75%;
 }
 
+.footcontainer {
+position: relative;
+    margin-right: 25%;
+    width: 71%;
+}
+
 .form-popup {
    display: none;
     position: fixed;
