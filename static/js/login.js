@@ -290,6 +290,7 @@ document.getElementById("carDet").style.display = "none";
 document.getElementById("open-button").style.display = "none";
 document.getElementById("changePassword").style.display = 'block';
 document.getElementById("search-car-details").style.display = 'none';
+document.getElementById("transTable").style.display = 'none';
 
 }
 
@@ -297,5 +298,18 @@ function clkChangePw()
 {
 document.getElementById("addBooks").style.display = 'none';
 document.getElementById("changePassword").style.display = 'block';
+
+
+}
+
+function clkTransac()
+{
+document.getElementById("dropdown_1").style.display = "none";
+document.getElementById("selected-book-details").style.display = "none";
+document.getElementById("carDet").style.display = "none";
+document.getElementById("open-button").style.display = "none";
+document.getElementById("changePassword").style.display = 'none';
+document.getElementById("search-car-details").style.display = 'none';
+document.getElementById("transTable").style.display = "";
 
 }

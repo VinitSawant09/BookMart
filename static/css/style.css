@@ -506,8 +506,11 @@ background-color: #26272b;
 
 }
 
-.social-icons-div
+.transTable
 {
-
+    color: #737373;
+    width: 75%;
+    margin-top: 5%;
+    font-weight: bold;
 
 }
