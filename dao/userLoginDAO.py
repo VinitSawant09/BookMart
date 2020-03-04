@@ -229,3 +229,52 @@ class userLoginDAO:
             ("Something went wrong.!! Contact the administrator.!")
         finally:
             cursor.close()
+
+
+    def getorderBookUser(self,data):
+
+        print("inside getorderBookUser in dao")
+
+        response = []
+
+        try:
+            objdatabase = database()
+            cursor = objdatabase.dbConn()
+            sql = 'SELECT * FROM dbo.BM_TRANSACTION where USERNAME=?'
+            cursor.execute(sql,data)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response.append([x for x in row])
+            print(len(response))
+
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response
+
+    def getallorderBook(self):
+
+        print("inside getallorderBook in dao")
+
+        response = []
+
+        try:
+            objdatabase = database()
+            cursor = objdatabase.dbConn()
+            sql = 'SELECT * FROM dbo.BM_TRANSACTION'
+            cursor.execute(sql)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response.append([x for x in row])
+            print(len(response))
+
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response

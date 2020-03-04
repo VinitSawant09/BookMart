@@ -48,6 +48,7 @@ def register():
 
     return render_template('register.html')
 
+
 @app.route("/signup/", methods=['POST'])
 def signup():
     print("inside signup")
@@ -236,10 +237,10 @@ def getAllBooks():
 
     count = 0
 
-    count = userLoginDAO.getAllBooks('')
+    response = userLoginDAO.getAllBooks('')
     print("Book Count =", session["bookcount"])
 
-    return jsonify(count)
+    return jsonify(response)
 
 @app.route("/getUserCount/", methods=['POST'])
 def getUserCount():
@@ -263,6 +264,24 @@ def orderBook():
         emailId = userLogin.fetchEmail(username)
         response = objemail.sendOrderEmail(emailId, userdata)
     return str(response)
+
+
+@app.route("/getorderBookUser/", methods=['POST'])
+def getorderBookUser():
+    print("inside getorderBookUser")
+    #username = session["username"]
+    username = 'Mak'
+    response = userLogin.getorderBookUser(username)
+
+    return jsonify(response)
+
+@app.route("/getallorderBook/", methods=['POST'])
+def getallorderBook():
+    print("inside getallorderBook")
+
+    response = userLogin.getallorderBook('')
+
+    return jsonify(response)
 
 
 

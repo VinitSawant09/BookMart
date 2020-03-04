@@ -49,4 +49,21 @@ class userLogin:
 
          return val
 
+    def getorderBookUser (data):
+
+         print("inside getorderBookUser")
+         luserLoginDAO = userLoginDAO()
+
+         val = luserLoginDAO.getorderBookUser(data)
+
+         return val
+
+    def getallorderBook (self):
+         print("inside getallorderBook")
+         luserLoginDAO = userLoginDAO()
+
+         val = luserLoginDAO.getallorderBook()
+
+         return val
+
 
