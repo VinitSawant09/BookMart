@@ -311,5 +311,47 @@ document.getElementById("open-button").style.display = "none";
 document.getElementById("changePassword").style.display = 'none';
 document.getElementById("search-car-details").style.display = 'none';
 document.getElementById("transTable").style.display = "";
+var $tableId = $("#transactOrder")
+ formData= {
+        }
+
+
+    $.ajax(
+       {
+        url  : "/getorderBookUser/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!='None')
+        {
+
+         console.log(response);
+         for (var i=0;i < response.length; i++)
+         {
+          $tableId.append($("<tr>").append($("<td>")
+          .html(response[i][0])).append($("<td>").html(response[i][2]))
+          .append($("<td>").html(response[i][3]))
+          .append($("<td>").html(response[i][5]))
+          .append($("<td>").html(response[i][6]))
+          .append($("<td>").html(response[i][7]))
+         );
+         }
+                     $(document).ready(function () {
+              $('#dtBasicExample').DataTable();
+              $('.dataTables_length').addClass('bs-select');
+            });
+
+        }
+        else
+        {
+         alert("Transaction failed.!")
+        }
+        }
+       });
 
 }

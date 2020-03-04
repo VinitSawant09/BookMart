@@ -269,9 +269,9 @@ def orderBook():
 @app.route("/getorderBookUser/", methods=['POST'])
 def getorderBookUser():
     print("inside getorderBookUser")
-    #username = session["username"]
-    username = 'Mak'
-    response = userLogin.getorderBookUser(username)
+    if session["username"] != '':
+        username = session["username"]
+        response = userLogin.getorderBookUser(username)
 
     return jsonify(response)
 
