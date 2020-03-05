@@ -81,14 +81,14 @@ $.ajax(
 	        	 					$sectionId.append($("<div>").append($("<img>").attr('src',"data:image/jpg;base64, "+ entireData[i][6])));
 
 	            	 			}
+
 	      $(".regular").slick({
 
 	            	   				 dots: false,
 	            	  		 		 infinite: true,
 	            	    			 slidesToShow: 4,
 	            	  	  			 slidesToScroll: 4,
-	            	  	  			 focusOnSelect:true,
-	            	  	  			  touchMove: false,
+
 	            	 			 });
 
 
@@ -757,7 +757,7 @@ function submitFormCart()
         if (response==0)
         {
           removeCart(id);
-          
+
           window.location.href =' /home/';
 
         }
