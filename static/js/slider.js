@@ -10,6 +10,7 @@
   var featuredCarList=[];
   var selectedBook=null;
   var cartItems=[];
+  var finalCheckoutItem=null;
 function myFunction()
 {
 
@@ -600,10 +601,11 @@ function viewCart()
          {
          for (var i=0;i<response.length; i++)
          {
+          cartItems.push(response[i])
           $cartList.append($("<p>").append($("<a>").html(response[i][2]+ " -  Cost: €"+response[i][6]+"  ").
           append($("<a>").html("Remove Item  ").attr("id",response[i][0]).attr("href","javascript:void(0);").attr("style","color:red;").attr("onClick","removeCart(this.id)"))
           .append($("<a>").html("&nbsp"))
-          .append($("<a>").html("Checkout Item").attr("id",response[i][0]).attr("href","#"))));
+          .append($("<a>").html("Checkout Item").attr("id",response[i][0]).attr("href","javascript:void(0);").attr("onClick","checkOutCart(this.id)"))));
 
 
 
@@ -666,3 +668,107 @@ console.log(id);
 
 
 }
+
+function checkOutCart(id)
+{
+console.log(cartItems)
+var checkOutItem =null;
+for(var i =0;i<cartItems.length;i++)
+{
+   if(cartItems[i][0]==id)
+   {
+       checkOutItem = cartItems[i];
+       finalCheckoutItem = cartItems[i];
+   }
+
+}
+
+            console.log(checkOutItem);
+            document.getElementById("divshopcart").style.display = 'none';
+            var expandImg = document.getElementById("expandedImg");
+                                          var imgText = document.getElementById("imgtext");
+                                          document.getElementById("selected-book-details").style.display = "block";
+                                          document.getElementById("carDet").style.display = "";
+                                          document.getElementById("open-button").style.display = "";
+
+                                          document.getElementById('cartButton').style.visibility = 'hidden';
+
+                                           document.getElementById("bookName").innerHTML=checkOutItem[2];
+                                          document.getElementById("bookAuthor").innerHTML="Author : "+checkOutItem[3];
+                                          document.getElementById("bookPrice").innerHTML="Price : "+checkOutItem[6] + " Euros";
+                                          document.getElementById("bookYear").innerHTML="Year : "+checkOutItem[5] ;
+                                          document.getElementById("about").innerHTML="About : "+checkOutItem[4] ;
+
+                                           document.getElementById("submitCart").style.display = "";
+                                           document.getElementById("submit").style.display = "none";
+
+
+
+                                           expandImg.src = "data:image/jpg;base64, "+ checkOutItem[7];
+                                     //         imgText.innerHTML = imgs.alt;
+                                              expandImg.parentElement.style.display = "block";
+                                              $('html, body').animate({
+                                                 scrollTop: $("#expandedImg").offset().top
+                                                 }, 700);
+
+}
+
+function submitFormCart()
+ {
+   var id = finalCheckoutItem[0];
+   var name = document.getElementById("name").value;
+   var bookmodel = document.getElementById("bookmodel").value;
+   var address = document.getElementById("address").value;
+   var cno = document.getElementById("contactnumber").value;
+
+   var price = document.getElementById("bookPrice").innerHTML;
+   price =price.replace("Price :", "")
+   price = price.replace("Euros", "")
+   alert(price)
+   if( !validateName() || !validatephno() || !validateAddress()  )
+   {
+     return false;
+   }
+
+
+  alert(name+" your details registered successfully for the book model "+ bookmodel);
+  document.getElementById("myForm").style.display = "none";
+
+      formData= {
+           "bookname": bookmodel,
+            "recvName": name,
+            "addr": address,
+            "phno":  cno,
+            "price":price
+        }
+
+
+    $.ajax(
+       {
+        url  : "/orderBook/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response==0)
+        {
+          removeCart(id);
+          
+          window.location.href =' /home/';
+
+        }
+        else
+        {
+         alert("cart checkout failed.!")
+        }
+        }
+       });
+
+
+
+
+ }
