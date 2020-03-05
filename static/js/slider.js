@@ -92,6 +92,50 @@ $.ajax(
 	            	 			 });
 
 
+
+
+	          $('.slick-slide').on('click', function(ev)
+	           			{
+	           			       console.log("clicked.!!");
+	           		           index=$(ev.currentTarget).data('slick-index');
+
+	           		           if(entireData.length<=index)
+	           		           {
+	           		              index=index-entireData.length;
+	           		              console.log(index);
+	           		              console.log(entireData[index]);
+	           		              selectedBook = entireData[index]
+	           		           }
+	           		           else
+	           		           {
+	           		             selectedBook = entireData[index]
+	           		             console.log(entireData[index]);
+
+	           		           }
+
+                              var expandImg = document.getElementById("expandedImg");
+                              var imgText = document.getElementById("imgtext");
+                              document.getElementById("selected-book-details").style.display = "block";
+                              document.getElementById("carDet").style.display = "";
+                              document.getElementById("open-button").style.display = "";
+
+                               document.getElementById("bookName").innerHTML=entireData[index][1];
+                              document.getElementById("bookAuthor").innerHTML="Author : "+entireData[index][2];
+                              document.getElementById("bookPrice").innerHTML="Price : "+entireData[index][4] + " Euros";
+                              document.getElementById("bookYear").innerHTML="Year : "+entireData[index][5] ;
+                              document.getElementById("about").innerHTML="About : "+entireData[index][3] ;
+
+                               expandImg.src = "data:image/jpg;base64, "+ entireData[index][6];
+                         //         imgText.innerHTML = imgs.alt;
+                                  expandImg.parentElement.style.display = "block";
+                                  $('html, body').animate({
+  	                                 scrollTop: $("#expandedImg").offset().top
+  	                                 }, 700);
+
+
+	           		     });
+
+
         }
        });
 
