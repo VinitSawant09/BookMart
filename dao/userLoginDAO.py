@@ -278,3 +278,27 @@ class userLoginDAO:
         finally:
             cursor.close()
         return response
+
+    def fetchCart(self,data):
+
+        print("inside fetchCart in dao")
+
+        response = []
+
+        try:
+            objdatabase = database()
+            cursor = objdatabase.dbConn()
+            sql = 'SELECT * FROM dbo.BM_CART where USERNAME=?'
+            cursor.execute(sql, data)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response.append([x for x in row])
+            print(len(response))
+
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response

@@ -213,6 +213,7 @@ function changePassword()
 document.getElementById("errorDiv").innerHTML="";
 var password=document.getElementById("password").value;
 var newPassword= document.getElementById("repassword").value;
+document.getElementById("divshopcart").style.display = '';
 
 if(password==newPassword)
 {
@@ -291,6 +292,7 @@ document.getElementById("open-button").style.display = "none";
 document.getElementById("changePassword").style.display = 'block';
 document.getElementById("search-car-details").style.display = 'none';
 document.getElementById("transTable").style.display = 'none';
+ document.getElementById("divshopcart").style.display = 'none';
 
 }
 
@@ -312,6 +314,7 @@ document.getElementById("carDet").style.display = "none";
 document.getElementById("open-button").style.display = "none";
 document.getElementById("changePassword").style.display = 'none';
 document.getElementById("search-car-details").style.display = 'none';
+document.getElementById("divshopcart").style.display = 'none';
 document.getElementById("transTable").style.display = "";
 var $tableId = $("#transactOrder")
  formData= {
@@ -363,6 +366,7 @@ $("#transactOrder").empty();
 document.getElementById("addBooks").style.display = 'none';
 document.getElementById("changePassword").style.display = 'none';
 document.getElementById("transTable").style.display = "";
+document.getElementById("divshopcart").style.display = 'none';
 var $tableId = $("#transactOrder")
  formData= {
         }

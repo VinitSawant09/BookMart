@@ -8,6 +8,8 @@
   var index=0;
   var selectedCar="";
   var featuredCarList=[];
+  var selectedBook=null;
+  var cartItems=[];
 function myFunction()
 {
 
@@ -108,30 +110,14 @@ $.ajax(
 	   	             var maxState = $("#maxPrice").children(":selected").attr("value");
 	   	             var minState = $("#minPrice").children(":selected").attr("value");
 
-                     /*
-	   	             //clearing the car details
-	   	             document.getElementById("open-button").style.display = "";
-	   	 	         document.getElementById("carName").innerHTML="";
-	   	 	         document.getElementById("carModel").innerHTML="";
-	   	 	         document.getElementById("carType").innerHTML="";
-	   	 	         document.getElementById("carPrice").innerHTML="";
-	   	 	         document.getElementById("carYear").innerHTML="";*/
+
 	   	             document.getElementById("noresult").style.display ="none";
 
 	            	 var $sectionId = $("#search-car")
 
 	            	 const myNode = document.getElementById("search-car");
 	            	 myNode.innerHTML = '';
-	            	 /*
-	            	 const image1 = document.getElementById("image1");
-	            	 image1.innerHTML = '';
-	            	 const image2 = document.getElementById("image2");
-	            	 image2.innerHTML = '';
-	            	 const image3 = document.getElementById("image3");
-	            	 image3.innerHTML = '';
-	            	 const expandedImg =document.getElementById("expandedImg");
-	            	 expandedImg.innerHTML ='';
-	            	  */
+
 	            	 var element = document.getElementById("search-car");
 
 	            	 //removing slickslider
@@ -325,12 +311,15 @@ $.ajax(
 	           		              index=index-finalData.length;
 	           		              console.log(index);
 	           		              console.log(finalData[index]);
+	           		              selectedBook = finalData[index]
 	           		           }
 	           		           else
 	           		           {
+	           		             selectedBook = finalData[index]
 	           		             console.log(finalData[index]);
 
 	           		           }
+
                               var expandImg = document.getElementById("expandedImg");
                               var imgText = document.getElementById("imgtext");
                               document.getElementById("selected-book-details").style.display = "block";
@@ -353,14 +342,6 @@ $.ajax(
 
 	           		     });
 
-
-
-	           		//scroll animation using jquery
-	           		/*
-	           		$('html, body').animate({
-	        	        scrollTop: $("#search-car-details").offset().top
-	        	    }, 500);
-                    */
 
 	             });
 }
@@ -524,7 +505,7 @@ function closeForm()
         }
         else
         {
-         alert("Transaction failed.!")
+         alert("adding to cart failed.!")
         }
         }
        });
@@ -535,4 +516,101 @@ function closeForm()
  }
 
 
+function addToCart()
+{
+cartItems.push(selectedBook)
 
+formData= {
+        "bookid":selectedBook[0],
+        "title":selectedBook[1],
+        "author":selectedBook[2],
+        "desc":selectedBook[3],
+        "cost":selectedBook[4],
+        "year":selectedBook[5],
+        "image":selectedBook[6]
+      }
+      $.ajax(
+       {
+        url  : "/addcart/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!='None')
+        {
+         console.log(response);
+         alert("success adding to cart");
+        }
+        else
+        {
+          alert("failed adding to cart");
+        }
+
+        }
+       });
+
+console.log(selectedBook)
+}
+function viewCart()
+{
+       console.log(cartItems)
+       var $itemCount = $("#itemCount");
+       var $cartList = $("#cartList");
+       var $totalprice =$("#totalprice");
+       $("#transactOrder").empty();
+
+
+       document.getElementById("changePassword").style.display = 'none';
+       document.getElementById("transTable").style.display = 'none';
+       $("#cartList").empty();
+       $("#itemCount").empty();
+
+       document.getElementById("divshopcart").style.display = '';
+       document.getElementById("dropdown_1").style.display = "none";
+        document.getElementById("selected-book-details").style.display = "none";
+        document.getElementById("carDet").style.display = "none";
+        document.getElementById("open-button").style.display = "none";
+        document.getElementById("search-car-details").style.display = 'none';
+
+      formData= {
+
+      }
+      $.ajax(
+       {
+        url  : "/fetchCart/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!='None')
+        {
+         console.log(response);
+         var totalCost=0;
+         $itemCount.append(response.length)
+         for (var i=0;i<response.length; i++)
+         {
+          $cartList.append($("<p>").append($("<a>").html(response[i][2]+ " -  Cost: €"+response[i][6])));
+         
+          totalCost= totalCost + parseInt(response[i][6]);
+         }
+          $totalprice.append("Total Cost € "+totalCost)
+        }
+        else
+        {
+          alert("failed fetching the cart");
+        }
+
+        }
+       });
+
+
+
+}

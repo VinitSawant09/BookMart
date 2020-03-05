@@ -275,7 +275,8 @@ h1 {
 
 .username
 {
-	margin-left: 10px;
+
+	margin-left: 2.5em;
     color: darkred;
     font-weight: bold;
     font-size: 25px;
@@ -513,4 +514,16 @@ background-color: #26272b;
     margin-top: 5%;
     font-weight: bold;
 
+}
+
+.divshopcart
+{
+    color: #737373;
+
+
+}
+.cartcontainer
+{
+
+    width: 30%;
 }

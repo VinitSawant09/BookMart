@@ -42,3 +42,26 @@ class adminDAO:
         finally:
             cursor.close()
         return 0
+
+    def addcart(self, username, bookid, title, author, desc, cost, year, image):
+
+        print("inside addcart in dao")
+
+        db = database()
+        cursor = db.insertdbConn(self.conn)
+        try:
+            cursor.execute("SELECT NEXT VALUE FOR SEQ_BM_CART")
+            result = cursor.fetchone()
+            print(result[0])
+
+            sql = 'insert into dbo.BM_CART (CARTID, BOOKID, TITLE, AUTHOR, BOOK_DESCRIPTION, COST, P_YEAR, IMAGE,USERNAME) values(?,?,?,?,?,?,?,?,?)'
+            with self.conn as cursor:
+                print("execute")
+                cursor.execute(sql, result[0], bookid,  title, author, desc, cost, year, image,username)
+
+            return result[0]
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return 0

@@ -66,4 +66,11 @@ class userLogin:
 
          return val
 
+    def fetchCart (data):
+         print("inside fetchCart")
+         luserLoginDAO = userLoginDAO()
+
+         val = luserLoginDAO.fetchCart(data)
+
+         return val
 

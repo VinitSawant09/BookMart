@@ -44,6 +44,7 @@
 
     		<span class="logo">Book Mart</span>
 
+
    		</div>
 
    			<div class="meta-nav">
@@ -52,13 +53,15 @@
 
     				<a class="navi" onclick="clkTransac()">Transactions</a>
 
+                    <a class="navi" onclick="viewCart()">Your Cart</a>
+
                     <a class="navi" onclick="clkChangePwUser()">Change Password</a>
 
                     <a id="AboutUs" onclick="redirectAboutUs()" class ="navi" >About Us</a>
 
    					 <a onclick="logout()" class ="navi" >Logout</a>
 
-   					 <span class="username">Hello {{username}}  .!</span>
+
     			</div>
     		</div>
 
@@ -92,6 +95,8 @@
 			<li><button type="button" id="search" value="Search">FIND
 					BOOKS</button></li>
 		</ul>
+
+        <span class="username">Hello {{username}}  .!</span>
 	</div>
 
 
@@ -146,6 +151,7 @@
                 <p id="about"></p>
              <br>
 			 <button class="open-button" id="open-button" onclick="openForm()">Order</button>
+              <button class="open-button" id="cartButton" onclick="addToCart()">Add to Cart</button>
 			</div>
 			<div id="imgtext">
 
@@ -235,6 +241,31 @@
 </table>
 </div>
 </center>
+
+<center>
+<div class="divshopcart" id="divshopcart" style="display:none" >
+    <div class="cartcontainer">
+      <h4>Cart
+        <span class="price" >
+          <i class="fa fa-shopping-cart"></i>
+            <span id="itemCount">
+
+            </span>
+          <!--<b>4</b> -->
+        </span>
+      </h4>
+        <div id ="cartList">
+
+        </div>
+      <hr>
+        <div id="totalprice">
+      <!--<p>Total <span class="price" ><b>$30</b></span></p>-->
+        </div>
+    </div>
+  </div>
+
+</center>
+
 <!-- Site footer -->
     <footer class="site-footer">
       <div class="footcontainer" id="About-us">

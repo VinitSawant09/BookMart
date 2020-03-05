@@ -284,6 +284,37 @@ def getallorderBook():
     return jsonify(response)
 
 
+@app.route('/addcart/', methods=['POST'])
+def addcart():
+
+     print("inside addcart")
+     userdata = json.loads(request.data)
+     print(userdata)
+     bookid=userdata.get('bookid')
+     title = userdata.get('title')
+     author = userdata.get('author')
+     desc = userdata.get('desc')
+     cost = userdata.get('cost')
+     year = userdata.get('year')
+     image = userdata.get('image')
+     username = session["username"]
+
+
+     response = adminController.addcart(username,bookid, title, author, desc, cost, year, image)
+
+
+     return str(response)
+
+@app.route("/fetchCart/", methods=['POST'])
+def fetchCart():
+    print("inside fetchCart")
+
+    if session["username"] != '':
+        username = session["username"]
+        response = userLogin.fetchCart(username)
+
+    return jsonify(response)
+
 
 if __name__ == '__main__':
     app.secret_key = 'namonamo'

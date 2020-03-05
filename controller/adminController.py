@@ -10,3 +10,11 @@ class adminController:
          response = ladminDAO.addBooks(title, author, desc, cost, year, file)
 
          return response
+
+    def addcart(username, bookid, title, author, desc, cost, year, image):
+        print("inside addcart")
+        ladminDAO = adminDAO()
+
+        response = ladminDAO.addcart(username, bookid, title, author, desc, cost, year, image)
+
+        return response
