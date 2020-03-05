@@ -18,3 +18,10 @@ class adminController:
         response = ladminDAO.addcart(username, bookid, title, author, desc, cost, year, image)
 
         return response
+    def removeCart(data):
+         print("inside removeCart")
+         ladminDAO = adminDAO()
+
+         val = ladminDAO.removeCart(data)
+
+         return val

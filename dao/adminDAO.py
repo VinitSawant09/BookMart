@@ -65,3 +65,26 @@ class adminDAO:
         finally:
             cursor.close()
         return 0
+
+    def removeCart(self, data):
+
+        print("inside removeCart in dao")
+        print(data)
+        response = 0
+        db = database()
+
+        try:
+
+            cursor = db.insertdbConn(self.conn)
+            sql = 'delete FROM dbo.BM_CART where CARTID=?'
+
+            with self.conn as cursor:
+                cursor.execute(sql, data)
+
+            return 0
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response

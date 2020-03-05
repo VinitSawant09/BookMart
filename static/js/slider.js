@@ -543,7 +543,7 @@ formData= {
         if (response!='None')
         {
          console.log(response);
-         alert("success adding to cart");
+
         }
         else
         {
@@ -557,11 +557,12 @@ console.log(selectedBook)
 }
 function viewCart()
 {
-       console.log(cartItems)
+
        var $itemCount = $("#itemCount");
        var $cartList = $("#cartList");
        var $totalprice =$("#totalprice");
        $("#transactOrder").empty();
+        $("#totalprice").empty();
 
 
        document.getElementById("changePassword").style.display = 'none';
@@ -595,13 +596,27 @@ function viewCart()
          console.log(response);
          var totalCost=0;
          $itemCount.append(response.length)
+         if(response.length>0)
+         {
          for (var i=0;i<response.length; i++)
          {
-          $cartList.append($("<p>").append($("<a>").html(response[i][2]+ " -  Cost: €"+response[i][6])));
-         
+          $cartList.append($("<p>").append($("<a>").html(response[i][2]+ " -  Cost: €"+response[i][6]+"  ").
+          append($("<a>").html("Remove Item  ").attr("id",response[i][0]).attr("href","javascript:void(0);").attr("style","color:red;").attr("onClick","removeCart(this.id)"))
+          .append($("<a>").html("&nbsp"))
+          .append($("<a>").html("Checkout Item").attr("id",response[i][0]).attr("href","#"))));
+
+
+
           totalCost= totalCost + parseInt(response[i][6]);
          }
           $totalprice.append("Total Cost € "+totalCost)
+        }
+        else
+        {
+
+         $cartList.append($("<p>").html("No items added in cart. !"));
+        }
+
         }
         else
         {
@@ -610,6 +625,43 @@ function viewCart()
 
         }
        });
+
+
+
+}
+
+function removeCart(id)
+{
+console.log("remove Cart");
+console.log(id);
+
+ formData= {
+        "id":id,
+        }
+      $.ajax(
+       {
+        url  : "/removeCart/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!='None')
+        {
+         console.log(response);
+
+         viewCart();
+        }
+        else
+        {
+          alert("failed deleting from cart");
+        }
+        }
+       });
+
 
 
 

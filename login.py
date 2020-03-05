@@ -316,6 +316,18 @@ def fetchCart():
     return jsonify(response)
 
 
+@app.route("/removeCart/", methods=['POST'])
+def removeCart():
+    print("inside removeCart")
+    userdata = json.loads(request.data)
+    id = userdata.get('id')
+    if session["username"] != '':
+
+        response = adminController.removeCart(id)
+
+    return str(response)
+
+
 if __name__ == '__main__':
     app.secret_key = 'namonamo'
     app.config['SESSION_TYPE'] = 'filesystem'
