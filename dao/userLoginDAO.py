@@ -1,6 +1,7 @@
 from datetime import date
 import time
-
+import passlib
+from passlib.hash import sha256_crypt
 import pyodbc
 from flask import session
 
@@ -19,10 +20,12 @@ class userLoginDAO:
 
         print("inside validateUserLogin in dao")
         username = data.get('username')
+        plainpassword = data.get('password')
 
-        password = data.get('password')
+        password = str(data.get('password'))
+        password = sha256_crypt.encrypt(password)
 
-        response=1
+        response = 1
         try:
             objdatabase = database()
             cursor = objdatabase.dbConn()
@@ -31,8 +34,10 @@ class userLoginDAO:
             records = cursor.fetchall()
             print(records)
             for row in records:
-                if row[2] == password:
-                    response=0
+                print(row[2])
+
+                if sha256_crypt.verify(plainpassword, row[2]):
+                    response = 0
                     session["userType"] = row[4]
 
 
@@ -50,6 +55,8 @@ class userLoginDAO:
         username = data.get('username')
         password = data.get('password')
         email = data.get('email')
+        password = sha256_crypt.encrypt(password)
+        print(password)
         db = database()
         cursor = db.insertdbConn(self.conn)
         try:
@@ -92,10 +99,10 @@ class userLoginDAO:
 
 
 
-    def changePassword(self, username,password):
+    def changePassword(self, username, password):
 
         print("inside changePassword in dao")
-
+        password = sha256_crypt.encrypt(password)
         db = database()
         cursor = db.insertdbConn(self.conn)
         try:
@@ -302,5 +309,25 @@ class userLoginDAO:
         finally:
             cursor.close()
         return response
+
+    def encode(string):
+        key ='DonaldTrump'
+        encoded_chars = []
+        for i in range(len(string)):
+            key_c = key[i % len(key)]
+            encoded_c = chr(ord(string[i]) + ord(key_c) % 256)
+            encoded_chars.append(encoded_c)
+        encoded_string = "".join(encoded_chars)
+        return encoded_string
+
+    def decode(string):
+        key = 'DonaldTrump'
+        encoded_chars = []
+        for i in range(len(string)):
+            key_c = key[i % len(key)]
+            encoded_c = chr(ord(string[i]) - ord(key_c) % 256)
+            encoded_chars.append(encoded_c)
+        encoded_string = "".join(encoded_chars)
+        return encoded_string
 
 

@@ -25,8 +25,7 @@ class userLogin:
 
          print("inside changePassword")
          luserLoginDAO = userLoginDAO()
-         print(password)
-         print(username)
+
          val = luserLoginDAO.changePassword(username,password)
 
          return val

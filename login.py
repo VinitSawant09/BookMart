@@ -9,6 +9,10 @@ from dao.userLoginDAO import userLoginDAO as userLoginDAO
 from dao.db import dataBase as database
 from impl.email import email as email
 from werkzeug.utils import secure_filename
+import hashlib
+import passlib
+from passlib.hash import sha256_crypt
+
 app = Flask(__name__)
 UPLOAD_FOLDER = './books'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -73,7 +77,7 @@ def sendPassword():
         response = userLogin.changePassword(username, password)
         if response == 0:
             emailId = userLogin.fetchEmail(username)
-            response = objemail.sendEmail(emailId,password)
+            response = objemail.sendEmail(emailId, password)
 
     return str(response)
 
@@ -327,10 +331,44 @@ def removeCart():
 
     return str(response)
 
+def encode(key, string):
+    encoded_chars = []
+    for i in range(len(string)):
+        key_c = key[i % len(key)]
+        encoded_c = chr(ord(string[i]) + ord(key_c) % 256)
+        encoded_chars.append(encoded_c)
+    encoded_string = "".join(encoded_chars)
+    return encoded_string
+
+def decode(key, string):
+    encoded_chars = []
+    for i in range(len(string)):
+        key_c = key[i % len(key)]
+        encoded_c = chr(ord(string[i]) - ord(key_c) % 256)
+        encoded_chars.append(encoded_c)
+    encoded_string = "".join(encoded_chars)
+    return encoded_string
+
+
+
+
+
+
 
 if __name__ == '__main__':
     app.secret_key = 'namonamo'
     app.config['SESSION_TYPE'] = 'filesystem'
+    #print(encode('DonaldTrump', 'Shreya'))
+    #print(decode('DonaldTrump','×àÆåÅ'))
+    password = sha256_crypt.encrypt("Saurabh")
+    print(password);
+    # password2 = sha256_crypt.encrypt("Shreya")
+
+    # print(password)
+    # print(password2)
+
+    # print(sha256_crypt.verify("Shreya", password2))
 
     app.run(debug=True)
+
 
