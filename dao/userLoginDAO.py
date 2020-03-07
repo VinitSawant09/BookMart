@@ -48,8 +48,8 @@ class userLoginDAO:
 
         print("inside registerUser in dao")
         username = data.get('username')
-
         password = data.get('password')
+        email = data.get('email')
         db = database()
         cursor = db.insertdbConn(self.conn)
         try:
@@ -59,10 +59,10 @@ class userLoginDAO:
                 userStatus=0
                 userType= 'User'
 
-                sql = 'insert into dbo.BM_USERS (UserId,UserName,UserPassword,UserStatus,UserType) values(next value for dbo.SEQ_USER_ID,?,?,?,?)'
+                sql = 'insert into dbo.BM_USERS (UserId,UserName,UserPassword,UserStatus,UserType,Email) values(next value for dbo.SEQ_USER_ID,?,?,?,?,?)'
                 with self.conn as cursor:
                     print("execute")
-                    cursor.execute(sql, username, password, userStatus, userType)
+                    cursor.execute(sql, username, password, userStatus, userType, email)
             else:
                 return 1
             return 0

@@ -158,11 +158,12 @@ function signUp()
     var username=document.getElementById("username").value;
 	var password=document.getElementById("password").value;
 	var repassword=document.getElementById("repassword").value;
+	var email = document.getElementById("email").value;
 
-	if(username == null || password == null || username =='' || password =='' || repassword == null || repassword =='')
+	if(username == null || password == null || username =='' || password =='' || repassword == null || repassword =='' || email == null || email =='')
 		{
 
-		  document.getElementById("errorDiv").innerHTML="User Name/password cannot be blank.!!";
+		  document.getElementById("errorDiv").innerHTML="Fields cannot be blank.!!";
 		  return false;
 		}
 	else if (password!= repassword)
@@ -170,15 +171,20 @@ function signUp()
 	    document.getElementById("errorDiv").innerHTML="Rentered password doesn't matches.!";
 	    return false;
 	}
+	else if (validateEmail(email) == false)
+	{
+	   document.getElementById("errorDiv").innerHTML="Invalid email Id";
+	}
     else
     {
-      alert("entering else up")
+
       if(checkUserName()!= false)
       {
-         alert("entering sign up")
+
          formData= {
         "username":username,
-        "password":password
+        "password":password,
+        "email":email
         }
       $.ajax(
        {
@@ -194,6 +200,7 @@ function signUp()
         if (response==0)
         {
           window.location.href ='/home';
+          alert("You can proceed for login");
 
         }
         else if (response==1)
@@ -366,7 +373,7 @@ $("#transactOrder").empty();
 document.getElementById("addBooks").style.display = 'none';
 document.getElementById("changePassword").style.display = 'none';
 document.getElementById("transTable").style.display = "";
-document.getElementById("divshopcart").style.display = 'none';
+
 var $tableId = $("#transactOrder")
  formData= {
         }
@@ -415,4 +422,9 @@ var $tableId = $("#transactOrder")
 
 }
 
+function validateEmail(email)
+{
+    var re = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    return re.test(String(email).toLowerCase());
+}
 
