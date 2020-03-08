@@ -331,6 +331,25 @@ def removeCart():
 
     return str(response)
 
+
+@app.route("/countUsers/", methods=['POST'])
+def countUsers():
+    print("inside countUsers")
+
+    if session["username"] != '':
+        response = adminController.countUsers('')
+
+    return str(response)
+
+@app.route("/transacCount/", methods=['POST'])
+def transacCount():
+    print("inside transacCount")
+
+    #if session["username"] != '':
+    response = adminController.transacCount('')
+    
+    return jsonify(response)
+
 def encode(key, string):
     encoded_chars = []
     for i in range(len(string)):
@@ -360,8 +379,8 @@ if __name__ == '__main__':
     app.config['SESSION_TYPE'] = 'filesystem'
     #print(encode('DonaldTrump', 'Shreya'))
     #print(decode('DonaldTrump','×àÆåÅ'))
-    password = sha256_crypt.encrypt("Saurabh")
-    print(password);
+    #password = sha256_crypt.encrypt("Saurabh")
+    #print(password);
     # password2 = sha256_crypt.encrypt("Shreya")
 
     # print(password)

@@ -25,3 +25,19 @@ class adminController:
          val = ladminDAO.removeCart(data)
 
          return val
+
+    def countUsers(data):
+        print("inside countUsers")
+        ladminDAO = adminDAO()
+
+        val = ladminDAO.countUsers()
+
+        return val
+
+    def transacCount(data):
+        print("inside transacCount")
+        ladminDAO = adminDAO()
+
+        val = ladminDAO.transacCount()
+
+        return val

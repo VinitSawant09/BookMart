@@ -32,9 +32,9 @@ class userLoginDAO:
             sql = 'SELECT * FROM dbo.BM_USERS where UserName=?'
             cursor.execute(sql, username)
             records = cursor.fetchall()
-            print(records)
+
             for row in records:
-                print(row[2])
+
 
                 if sha256_crypt.verify(plainpassword, row[2]):
                     response = 0
@@ -102,6 +102,7 @@ class userLoginDAO:
     def changePassword(self, username, password):
 
         print("inside changePassword in dao")
+
         password = sha256_crypt.encrypt(password)
         db = database()
         cursor = db.insertdbConn(self.conn)
@@ -141,8 +142,10 @@ class userLoginDAO:
     def checkPassword(self, username, userdata):
 
         print("inside checkPassword in dao")
-        password = userdata.get('password')
 
+        password = str(userdata.get('password'))
+        password = sha256_crypt.encrypt(password)
+        plainpassword = userdata.get('password')
         response = 1
         try:
             objdatabase = database()
@@ -152,9 +155,9 @@ class userLoginDAO:
             records = cursor.fetchall()
             print(records)
             for row in records:
-                if row[0] == password:
-                    response =  0
-                    return response
+                if sha256_crypt.verify(plainpassword, row[0]):
+                     response = 0
+                     return response
 
             return response
         except:

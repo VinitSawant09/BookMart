@@ -16,8 +16,6 @@ class adminDAO:
 
         print("inside addBooks in dao")
 
-
-
         db = database()
         cursor = db.insertdbConn(self.conn)
         try:
@@ -82,6 +80,54 @@ class adminDAO:
                 cursor.execute(sql, data)
 
             return 0
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response
+
+    def countUsers(self):
+
+        print("inside countUsers in dao")
+
+        response = 0
+        db = database()
+        usertype = 'User'
+        try:
+
+            cursor = db.dbConn()
+            sql = 'SELECT COUNT(*) FROM dbo.BM_USERS where USERTYPE=?'
+            cursor.execute(sql, usertype)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response = row[0]
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response
+
+    def transacCount(self):
+
+        print("inside transacCount in dao")
+
+        db = database()
+        response = []
+
+        try:
+
+            cursor = db.dbConn()
+            sql = 'SELECT count(*) AS orderCount,sum(case when convert(date,TRANSACTIONTIME) = CONVERT (date, SYSDATETIME())  then 1 else 0 end) AS TODAY,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -1, CONVERT (date, SYSDATETIME()))   then 1 else 0 end) AS TODAY1,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -2, CONVERT (date, SYSDATETIME()))   then 1 else 0 end) AS TODAY2,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -3, CONVERT (date, SYSDATETIME())) then 1 else 0 end) AS TODAY3,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -4, CONVERT (date, SYSDATETIME()))  then 1 else 0 end) AS TODAY4 ,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -5, CONVERT (date, SYSDATETIME()))  then 1 else 0 end) AS TODAY5,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -6, CONVERT (date, SYSDATETIME()))  then 1 else 0 end) AS TODAY6,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -7, CONVERT (date, SYSDATETIME()))  then 1 else 0 end) AS TODAY7 FROM dbo.BM_TRANSACTION'
+            cursor.execute(sql)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response.append([x for x in row])
+
+
 
         except:
             ("Something went wrong.!! Contact the administrator.!")

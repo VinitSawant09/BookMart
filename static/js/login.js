@@ -220,7 +220,7 @@ function changePassword()
 document.getElementById("errorDiv").innerHTML="";
 var password=document.getElementById("password").value;
 var newPassword= document.getElementById("repassword").value;
-document.getElementById("divshopcart").style.display = '';
+
 
 if(password==newPassword)
 {
