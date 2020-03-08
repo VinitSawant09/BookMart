@@ -308,6 +308,7 @@ function clkChangePw()
 document.getElementById("addBooks").style.display = 'none';
 document.getElementById("changePassword").style.display = 'block';
 document.getElementById("transTable").style.display = "none";
+document.getElementById("countbarchart").style.display = 'none';
 
 
 }
@@ -373,6 +374,7 @@ $("#transactOrder").empty();
 document.getElementById("addBooks").style.display = 'none';
 document.getElementById("changePassword").style.display = 'none';
 document.getElementById("transTable").style.display = "";
+document.getElementById("countbarchart").style.display = 'none';
 
 var $tableId = $("#transactOrder")
  formData= {

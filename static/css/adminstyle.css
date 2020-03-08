@@ -496,3 +496,16 @@ border: 3px solid #f1f1f1;
     font-weight: bold;
 
 }
+
+.countbarchart
+{
+background-color: white;
+    width: 60%;
+    }
+
+canvas{
+
+  width:80% !important;
+  height:60% !important;
+
+}

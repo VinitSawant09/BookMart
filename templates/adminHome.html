@@ -8,6 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='/js/login.js') }}"></script>
      <script src="{{ url_for('static', filename='/js/admin.js') }}"></script>
+     <script src="{{ url_for('static', filename='./js/moment.js')}}"></script>
+    <script src="{{ url_for('static', filename='./js/Chart.js')}}"></script>
 
      <!-- Font Awesome-->
 	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -24,8 +26,9 @@
 	  <!-- MDB core JavaScript -->
 	  <script type="text/javascript" src="{{ url_for('static', filename='./js/mdb.min.js')}}" ></script>
 
+
 </head>
-<body>
+<body onload="myFunction()">
 
 <div class="header">
 
@@ -40,6 +43,7 @@
    			<div class="meta-nav">
    				<div class="main_nav">
                     <!--<a class="navi" href="#adminHome">Home</a>-->
+                    <a class="navi" onclick="goAdminHome()">Home</a>
     				<a class="navi" onclick="addBooksRedirect()">Add Books</a>
 
     				<a class="navi" onclick="clkTransacAdmin()">Transactions</a>
@@ -48,12 +52,18 @@
 
    					 <a onclick="logout()" class ="navi" >Logout</a>
 
-   					 <span class="username">Hello Admin {{username}}  .!</span>
+   					 <span class="username">Hello {{username}}  .!</span>
     			</div>
     		</div>
 
 
     </div>
+<br>
+<center>
+<div id="countbarchart" class="countbarchart">
+<canvas id="myChart2" height="50%" width="50%"></canvas>
+</div>
+</center>>
 <br>
 <div id="changePassword"  style="display:none">
 <form method="post" class="formpw">

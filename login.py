@@ -347,7 +347,7 @@ def transacCount():
 
     #if session["username"] != '':
     response = adminController.transacCount('')
-    
+
     return jsonify(response)
 
 def encode(key, string):
