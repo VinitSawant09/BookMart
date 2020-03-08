@@ -373,10 +373,21 @@ def topBooks():
 def topUsers():
     print("inside topUsers")
 
-    #if session["username"] != '':
-    response = adminController.topUsers('')
+    if session["username"] != '':
+        response = adminController.topUsers('')
 
     return jsonify(response)
+
+@app.route("/ordersTodays/", methods=['POST'])
+def ordersTodays():
+    print("inside ordersTodays")
+
+    #if session["username"] != '':
+    response = adminController.ordersTodays('')
+
+    return jsonify(response)
+
+
 
 def encode(key, string):
     encoded_chars = []

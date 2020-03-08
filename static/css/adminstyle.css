@@ -503,6 +503,13 @@ background-color: white;
     width: 50%;
     }
 
+.dashboardDisplay
+{
+    font-size: 2em;
+    color: darkred;
+    font-weight: bold;
+}
+
 canvas{
 
   width:80% !important;

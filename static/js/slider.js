@@ -142,7 +142,7 @@ $.ajax(
      //search  book functionality starts
 	       $("#search").click(function()
 	            {
-	    	         //console.log(entireData)
+
                      finalData=[];
 	    	         //clearing the details
      	             document.getElementById("search-car-details").style.display = "";
@@ -513,7 +513,7 @@ function closeForm()
    var price = document.getElementById("bookPrice").innerHTML;
    price =price.replace("Price :", "")
    price = price.replace("Euros", "")
-   alert(price)
+
    if( !validateName() || !validatephno() || !validateAddress()  )
    {
      return false;

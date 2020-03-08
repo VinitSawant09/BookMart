@@ -118,6 +118,10 @@ return false;
 
 function myFunction()
 {
+var totalUsersCount=0;
+var totalRevenueEarned=0;
+var totalBooksSold=0;
+
 var formData={};
 
  $.ajax(
@@ -133,7 +137,9 @@ var formData={};
 
         if (response!='None')
         {
-            console.log(response);
+
+            totalBooksSold=response[0][0];
+            document.getElementById("totalBooksSold").innerHTML="Total Books Sold ="+totalBooksSold;
             var values= [response[0][1],response[0][2],response[0][3],response[0][4],response[0][5],response[0][6],response[0][7]]
             var dates= Last7Days();
             var datesArr = dates.split(',');
@@ -171,7 +177,11 @@ var formData={};
                                   beginAtZero:true
                               }
                           }]
-                      }
+                      },
+                      title: {
+                         display: true,
+                         text: 'No. Of Books Sold in last 7 days'
+        }
                   }
             });
 
@@ -204,7 +214,11 @@ var formData={};
 
         if (response!='None')
         {
-            console.log(response);
+
+            totalRevenueEarned=response[0][0];
+
+             document.getElementById("totalRevenue").innerHTML= "Total Revenue (Euros) - "+ totalRevenueEarned;
+
             var values= [response[0][1],response[0][2],response[0][3],response[0][4],response[0][5],response[0][6],response[0][7]]
             var dates= Last7Days();
             var datesArr = dates.split(',');
@@ -242,12 +256,16 @@ var formData={};
                                   beginAtZero:true
                               }
                           }]
-                      }
+                      },
+                      title: {
+                         display: true,
+                         text: 'Sales Amount in last 7 days'
+        }
                   }
             });
 
 
-            myChart.update();
+
 
         }
 
@@ -306,7 +324,11 @@ var formData={};
                                   beginAtZero:true
                               }
                           }]
-                      }
+                      },
+                      title: {
+                         display: true,
+                         text: 'Top 5 Popular Books'
+        }
                   }
             });
 
@@ -351,7 +373,7 @@ var formData={};
               data: {
                 labels: arr,
                 datasets: [{
-                  label: 'Top 5 Books Sold',
+                  label: 'Top 5 Users.',
                   backgroundColor: [
                     chartColors.green,
                     chartColors.red,
@@ -371,17 +393,44 @@ var formData={};
                                   beginAtZero:true
                               }
                           }]
-                      }
+                      },
+                      title: {
+                         display: true,
+                         text: 'Top 5 Customers based on purchases.'
+             }
                   }
             });
 
-            myChart.update();
+
 
         }
 
         }
 
        });
+
+       $.ajax(
+       {
+        url  : "/countUsers/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!='None')
+        {
+           totalUsersCount=response;
+           console.log(response);
+           document.getElementById("totalUserCount").innerHTML="Total Users = "+totalUsersCount;
+
+        }
+       }
+       });
+
+
 
 
 }
