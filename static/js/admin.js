@@ -247,13 +247,69 @@ var formData={};
             });
 
 
-            var colorChangeValue = 3; //set this to whatever is the deciding color change value
-            var dataset = myChart.data.datasets[0];
-            for (var i = 0; i < dataset.data.length; i++) {
-              if (dataset.data[i] > colorChangeValue) {
-                dataset.backgroundColor[i] = chartColors.green;
-              }
-            }
+            myChart.update();
+
+        }
+
+        }
+
+       });
+    $.ajax(
+       {
+        url  : "/topBooks/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!='None')
+        {
+
+            var values= [response[0][0],response[1][0],response[2][0],response[3][0],response[4][0]]
+            var arr =[response[0][1],response[1][1],response[2][1],response[3][1],response[4][1]]
+            var chartColors = {
+              green: 'green',
+              red: 'red',
+              blue:'blue',
+              orange:'orange',
+              yellow:'yellow'
+            };
+
+            var ctx = document.getElementById("myChart3").getContext("2d");
+
+
+            var myChart = new Chart(ctx, {
+              type: 'polarArea',
+              data: {
+                labels: arr,
+                datasets: [{
+                  label: 'Top 5 Books Sold',
+                  backgroundColor: [
+                    chartColors.green,
+                    chartColors.red,
+                    chartColors.blue,
+                    chartColors.orange,
+                    chartColors.yellow
+
+
+                  ],
+                  data: values
+                }],
+              },
+                  options: {
+                      scales: {
+                          yAxes: [{
+                              ticks: {
+                                  beginAtZero:true
+                              }
+                          }]
+                      }
+                  }
+            });
+
             myChart.update();
 
         }
@@ -262,6 +318,70 @@ var formData={};
 
        });
 
+
+        $.ajax(
+       {
+        url  : "/topUsers/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!='None')
+        {
+
+            var values= [response[0][0],response[1][0],response[2][0],response[3][0],response[4][0]]
+            var arr =[response[0][1],response[1][1],response[2][1],response[3][1],response[4][1]]
+            var chartColors = {
+              green: 'green',
+              red: 'red',
+              blue:'blue',
+              orange:'orange',
+              yellow:'yellow'
+            };
+
+            var ctx = document.getElementById("myChart4").getContext("2d");
+
+
+            var myChart = new Chart(ctx, {
+              type: 'pie',
+              data: {
+                labels: arr,
+                datasets: [{
+                  label: 'Top 5 Books Sold',
+                  backgroundColor: [
+                    chartColors.green,
+                    chartColors.red,
+                    chartColors.blue,
+                    chartColors.orange,
+                    chartColors.yellow
+
+
+                  ],
+                  data: values
+                }],
+              },
+                  options: {
+                      scales: {
+                          yAxes: [{
+                              ticks: {
+                                  beginAtZero:true
+                              }
+                          }]
+                      }
+                  }
+            });
+
+            myChart.update();
+
+        }
+
+        }
+
+       });
 
 
 }

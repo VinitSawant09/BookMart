@@ -185,5 +185,30 @@ class adminDAO:
             cursor.close()
         return response
 
+    def topUsers(self):
+
+        print("inside topUsers in dao")
+
+        db = database()
+        response = []
+
+        try:
+
+            cursor = db.dbConn()
+            sql='select COUNT(*) AS BOOKSSOLD,USERNAME from BM_TRANSACTION GROUP BY USERNAME ORDER BY BOOKSSOLD DESC'
+            cursor.execute(sql)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response.append([x for x in row])
+
+
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response
+
 
 

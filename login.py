@@ -364,8 +364,17 @@ def salesCount():
 def topBooks():
     print("inside topBooks")
 
+    if session["username"] != '':
+         response = adminController.topBooks('')
+
+    return jsonify(response)
+
+@app.route("/topUsers/", methods=['POST'])
+def topUsers():
+    print("inside topUsers")
+
     #if session["username"] != '':
-    response = adminController.topBooks('')
+    response = adminController.topUsers('')
 
     return jsonify(response)
 

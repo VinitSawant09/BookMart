@@ -57,3 +57,11 @@ class adminController:
         val = ladminDAO.topBooks()
 
         return val
+
+    def topUsers(data):
+        print("inside topUsers")
+        ladminDAO = adminDAO()
+
+        val = ladminDAO.topUsers()
+
+        return val
