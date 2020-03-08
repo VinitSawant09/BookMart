@@ -345,8 +345,27 @@ def countUsers():
 def transacCount():
     print("inside transacCount")
 
+    if session["username"] != '':
+        response = adminController.transacCount('')
+
+    return jsonify(response)
+
+@app.route("/salesCount/", methods=['POST'])
+def salesCount():
+    print("inside salesCount")
+
+    if session["username"] != '':
+         response = adminController.salesCount('')
+
+    return jsonify(response)
+
+
+@app.route("/topBooks/", methods=['POST'])
+def topBooks():
+    print("inside topBooks")
+
     #if session["username"] != '':
-    response = adminController.transacCount('')
+    response = adminController.topBooks('')
 
     return jsonify(response)
 

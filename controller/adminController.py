@@ -41,3 +41,19 @@ class adminController:
         val = ladminDAO.transacCount()
 
         return val
+
+    def salesCount(data):
+        print("inside salesCount")
+        ladminDAO = adminDAO()
+
+        val = ladminDAO.salesCount()
+
+        return val
+
+    def topBooks(data):
+        print("inside topBooks")
+        ladminDAO = adminDAO()
+
+        val = ladminDAO.topBooks()
+
+        return val

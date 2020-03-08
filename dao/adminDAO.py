@@ -134,3 +134,56 @@ class adminDAO:
         finally:
             cursor.close()
         return response
+
+    def salesCount(self):
+
+        print("inside salesCount in dao")
+
+        db = database()
+        response = []
+
+        try:
+
+            cursor = db.dbConn()
+            sql = "SELECT sum(PRICE) AS TOTALCOST, sum(case when convert(date,TRANSACTIONTIME) = CONVERT (date, SYSDATETIME())  then PRICE else 0 end) AS TODAY,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -1, CONVERT (date, SYSDATETIME()))   then PRICE else 0 end) AS TODAY1,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -2, CONVERT (date, SYSDATETIME()))   then PRICE else 0 end) AS TODAY2,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -3, CONVERT (date, SYSDATETIME())) then PRICE else 0 end) AS TODAY3,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -4, CONVERT (date, SYSDATETIME()))  then PRICE else 0 end) AS TODAY4 ,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -5, CONVERT (date, SYSDATETIME()))  then PRICE else 0 end) AS TODAY5,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -6, CONVERT (date, SYSDATETIME()))  then PRICE else 0 end) AS TODAY6,sum(case when convert(date,TRANSACTIONTIME) = DATEADD(DAY, -7, CONVERT (date, SYSDATETIME()))  then PRICE else 0 end) AS TODAY7 FROM dbo.BM_TRANSACTION"
+            cursor.execute(sql)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response.append([x for x in row])
+
+
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response
+
+    def topBooks(self):
+
+        print("inside topBooks in dao")
+
+        db = database()
+        response = []
+
+        try:
+
+            cursor = db.dbConn()
+            sql = 'select COUNT(*) AS BOOKSSOLD,BOOKNAME from BM_TRANSACTION GROUP BY BOOKNAME ORDER BY BOOKSSOLD DESC'
+            cursor.execute(sql)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response.append([x for x in row])
+
+
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response
+
+
+

@@ -500,12 +500,12 @@ border: 3px solid #f1f1f1;
 .countbarchart
 {
 background-color: white;
-    width: 60%;
+    width: 50%;
     }
 
 canvas{
 
   width:80% !important;
-  height:60% !important;
+  height:40% !important;
 
 }

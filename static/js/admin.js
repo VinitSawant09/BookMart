@@ -142,7 +142,7 @@ var formData={};
               red: 'red'
             };
 
-            var ctx = document.getElementById("myChart2").getContext("2d");
+            var ctx = document.getElementById("myChart").getContext("2d");
 
 
             var myChart = new Chart(ctx, {
@@ -150,7 +150,7 @@ var formData={};
               data: {
                 labels: datesArr,
                 datasets: [{
-                  label: 'Transactions Data',
+                  label: 'Books Sold',
                   backgroundColor: [
                     chartColors.red,
                     chartColors.red,
@@ -191,6 +191,76 @@ var formData={};
 
        });
 
+  $.ajax(
+       {
+        url  : "/salesCount/",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        type : 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+
+        if (response!='None')
+        {
+            console.log(response);
+            var values= [response[0][1],response[0][2],response[0][3],response[0][4],response[0][5],response[0][6],response[0][7]]
+            var dates= Last7Days();
+            var datesArr = dates.split(',');
+            var chartColors = {
+              green: 'green',
+              red: 'red'
+            };
+
+            var ctx = document.getElementById("myChart2").getContext("2d");
+
+
+            var myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: datesArr,
+                datasets: [{
+                  label: 'Euros Earned',
+                  backgroundColor: [
+                    chartColors.red,
+                    chartColors.red,
+                    chartColors.red,
+                    chartColors.red,
+                    chartColors.red,
+                    chartColors.red,
+                    chartColors.red
+
+                  ],
+                  data: values
+                }],
+              },
+                  options: {
+                      scales: {
+                          yAxes: [{
+                              ticks: {
+                                  beginAtZero:true
+                              }
+                          }]
+                      }
+                  }
+            });
+
+
+            var colorChangeValue = 3; //set this to whatever is the deciding color change value
+            var dataset = myChart.data.datasets[0];
+            for (var i = 0; i < dataset.data.length; i++) {
+              if (dataset.data[i] > colorChangeValue) {
+                dataset.backgroundColor[i] = chartColors.green;
+              }
+            }
+            myChart.update();
+
+        }
+
+        }
+
+       });
 
 
 
