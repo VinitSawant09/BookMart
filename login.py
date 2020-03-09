@@ -9,9 +9,8 @@ from dao.userLoginDAO import userLoginDAO as userLoginDAO
 from dao.db import dataBase as database
 from impl.email import email as email
 from werkzeug.utils import secure_filename
-import hashlib
-import passlib
-from passlib.hash import sha256_crypt
+from impl.excelGen import ExcelGen as excel
+
 
 app = Flask(__name__)
 UPLOAD_FOLDER = './books'
@@ -383,9 +382,13 @@ def ordersTodays():
     print("inside ordersTodays")
 
     #if session["username"] != '':
-    response = adminController.ordersTodays('')
+    response = excel.excelGen('')
+    try:
+        return send_file('./'+response,
+                         attachment_filename=response)
+    except Exception as e:
+        return str(e)
 
-    return jsonify(response)
 
 
 

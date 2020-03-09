@@ -516,3 +516,16 @@ canvas{
   height:40% !important;
 
 }
+
+.downloadButton
+{
+width: 50%;
+    margin-left: 16%;
+}
+
+.dwlndbtn
+{
+width: 85%;
+    margin-left: 0%;
+
+}

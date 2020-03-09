@@ -210,5 +210,30 @@ class adminDAO:
             cursor.close()
         return response
 
+    def ordersTodays(self):
+
+        print("inside ordersTodays in dao")
+
+        db = database()
+        response = []
+
+        try:
+
+            cursor = db.dbConn()
+            sql = 'select TRANSACTIONID,USERNAME,BOOKNAME,ADDR,PHNO,RECEIVERNAME,PRICE from BM_TRANSACTION where convert(date,TRANSACTIONTIME)= CONVERT (date, SYSDATETIME())'
+            cursor.execute(sql)
+            rowlist = cursor.fetchall()
+
+            for row in rowlist:
+                response.append([x for x in row])
+
+
+
+        except:
+            ("Something went wrong.!! Contact the administrator.!")
+        finally:
+            cursor.close()
+        return response
+
 
 
