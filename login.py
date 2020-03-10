@@ -411,6 +411,19 @@ def decode(key, string):
     return encoded_string
 
 
+@app.errorhandler(404)
+# inbuilt function which takes error as parameter
+def not_found(e):
+    # defining function
+    return render_template("404.html")
+
+@app.errorhandler(500)
+# inbuilt function which takes error as parameter
+def not_found(e):
+    # defining function
+    return render_template("500.html")
+
+
 
 
 
