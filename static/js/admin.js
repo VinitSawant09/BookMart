@@ -11,6 +11,8 @@ document.getElementById("changePassword").style.display = 'none';
 document.getElementById("transTable").style.display = "none";
 document.getElementById("addBooks").style.display = 'block';
 document.getElementById("countbarchart").style.display = 'none';
+document.getElementById("downloadButton").style.display = 'none';
+
 }
 
 function addBookValid()

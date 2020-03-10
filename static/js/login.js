@@ -301,6 +301,7 @@ document.getElementById("search-car-details").style.display = 'none';
 document.getElementById("transTable").style.display = 'none';
  document.getElementById("divshopcart").style.display = 'none';
 
+
 }
 
 function clkChangePw()
@@ -309,6 +310,7 @@ document.getElementById("addBooks").style.display = 'none';
 document.getElementById("changePassword").style.display = 'block';
 document.getElementById("transTable").style.display = "none";
 document.getElementById("countbarchart").style.display = 'none';
+document.getElementById("downloadButton").style.display = 'none';
 
 
 }
@@ -375,6 +377,7 @@ document.getElementById("addBooks").style.display = 'none';
 document.getElementById("changePassword").style.display = 'none';
 document.getElementById("transTable").style.display = "";
 document.getElementById("countbarchart").style.display = 'none';
+document.getElementById("downloadButton").style.display = 'none';
 
 var $tableId = $("#transactOrder")
  formData= {
