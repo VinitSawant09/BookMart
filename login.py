@@ -381,8 +381,8 @@ def topUsers():
 def ordersTodays():
     print("inside ordersTodays")
 
-    #if session["username"] != '':
-    response = excel.excelGen('')
+    if session["username"] != '':
+        response = excel.excelGen('')
     try:
         return send_file('./'+response,
                          attachment_filename=response)
@@ -430,6 +430,6 @@ if __name__ == '__main__':
 
     # print(sha256_crypt.verify("Shreya", password2))
 
-    app.run(debug=True)
+    app.run()
 
 

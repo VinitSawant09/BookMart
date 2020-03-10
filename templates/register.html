@@ -25,17 +25,17 @@
 
   <div class="containerlogin">
     <label for="uname"><b style="margin-left: -30px">Username : </b></label>
-    <input type="text" placeholder="Enter Username" name="username" id="username" onblur="return checkUserName();" required>
+    <input type="text" placeholder="Enter Username" name="username" id="username"  maxlength="20" onblur="return checkUserName();" required>
     <br>
     <label for="psw"><b style="margin-left: -30px">Password : </b></label>
-    <input type="password" placeholder="Enter Password" name="password" id ="password" required>
+    <input type="password" placeholder="Enter Password" name="password"  maxlength="20" id ="password" required>
      <br>
     <label for="psw"><b style="margin-left: -30px">Password : </b></label>
-    <input type="password" placeholder="Enter Password again" name="repassword" id ="repassword" required>
+    <input type="password" placeholder="Enter Password again" name="repassword"  maxlength="20" id ="repassword" required>
     <br>
 
             <label for="psw"><b style="margin-left: -30px">Email ID :   </b></label>
-    <input type="text" placeholder="Enter Email Address" name="email" id ="email" required>
+    <input type="text" placeholder="Enter Email Address" name="email"  maxlength="50" id ="email" required>
        <div id ="errorDiv" class ="errorDiv" style="
     margin-left: -30px;
       ">

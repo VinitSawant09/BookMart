@@ -588,8 +588,8 @@ margin-left: 4%;
    }
    
    .drop-down-container ul {
-    margin: 0 11%;
-    padding: 0 5%;
+    margin: 3px 14%;
+    padding: 0 0%;
     display: block;
 }
    
@@ -764,27 +764,27 @@ position: relative;
 }
 
 .open-button {
-       background-color: #555;
+      background-color: #555;
     color: white;
-    padding: 1em 2em;
+    padding: 1em 1em;
     border: none;
     cursor: pointer;
     opacity: 0.8;
     position: relative;
-   margin-left: 14.15em;
-    margin-top: -13em;
-    margin-bottom: -4em;
-    width: 6em;
+    margin-left: 1.15em;
+    margin-top: 1em;
+    margin-bottom: 3em;
+    width: 24em;
 }
 
 .carDet {
- width: 40%;
-    margin-left: 3em;
+    width: 100%;
+    margin-left: 0em;
     margin-top: 1em;
-    margin-bottom: 10em;
+    margin-bottom: 13em;
     font-family: Trebuchet MS;
     font-weight: 700;
-    font-size: 0.65em;
+    font-size: 0.75em;
 }
 
 .drop-down-container ul li select, button {
@@ -813,7 +813,13 @@ position: relative;
     list-style: none;
     display: inline-block;
     float: left;
-    margin: 4.5% 4.5%;
+    margin: 6.5% 4.5%;
+}
+.username {
+    margin-left: 1.5em;
+    color: darkred;
+    font-weight: bold;
+    font-size: 2.25em;
 }
 
 .index-contact-us {
@@ -821,7 +827,7 @@ position: relative;
 }
 
 .search-car-list {
-    margin-top: 12em;
+  /*  margin-top: 12em;*/
 }
 
 .noresult {
@@ -830,6 +836,19 @@ position: relative;
     color: red;
 }
 
+
+.drop-down-container {
+    margin-top: 0;
+    width: 100%;
+    height: 13.0em;
+    background-color: #26272b;
+}
+
+.footcontainer {
+    position: relative;
+    margin-right: 25%;
+    width: 100%;
+}
 
 
 }
@@ -891,8 +910,8 @@ position: relative;
    }
    
    .drop-down-container ul {
-    margin: 0 11%;
-    padding: 0 5%;
+    margin: 0 3%;
+    padding: 0 0%;
     display: block;
 }
    
@@ -1061,27 +1080,27 @@ position: relative;
 }
 
 .open-button {
-       background-color: #555;
+      background-color: #555;
     color: white;
-    padding: 1em 2em;
+    padding: 2em 4em;
     border: none;
     cursor: pointer;
     opacity: 0.8;
     position: relative;
-   margin-left: 14.15em;
-    margin-top: -13em;
-    margin-bottom: -4em;
-    width: 6em;
+    margin-left: 5.15em;
+    margin-top: 1em;
+    margin-bottom: 0em;
+    width: 15em;
 }
 
 .carDet {
- width: 40%;
-    margin-left: 3em;
+ width: 100%;
+    margin-left: 0em;
     margin-top: 1em;
-    margin-bottom: 10em;
+    margin-bottom: 13em;
     font-family: Trebuchet MS;
     font-weight: 700;
-    font-size: 0.65em;
+    font-size: 0.85em;
 }
 
 .drop-down-container ul li select, button {
@@ -1120,7 +1139,22 @@ position: relative;
 
 
 .search-car-list {
-    margin-top: 12em;
+ /*   margin-top: 12em;*/
+}
+
+.drop-down-container {
+    margin-top: 0;
+    width: 100%;
+    height: 9.8em;
+    background-color: #26272b;
+}
+
+.username {
+    margin-left: 8.5em;
+    color: darkred;
+    font-weight: bold;
+    font-size: 17px;
+    /* margin-top: 79em; */
 }
 
 }
@@ -1183,12 +1217,11 @@ position: relative;
     height: 5em;
    }
    
-   .drop-down-container ul {
-    margin: 0 11%;
-    padding: 0 5%;
+  .drop-down-container ul {
+    margin: 0 0%;
+    padding: 0 1%;
     display: block;
-    margin-left: 21%;
-    
+    margin-left: 0%;
 }
    
    .fcars-hr-st {
@@ -1356,29 +1389,29 @@ position: relative;
 }
 
 .open-button {
-       background-color: #555;
+      background-color: #555;
     color: white;
     padding: 1em 2em;
     border: none;
     cursor: pointer;
     opacity: 0.8;
     position: relative;
-   margin-left: 14.15em;
-    margin-top: -13em;
-    margin-bottom: -4em;
-   width: 10em;
-    margin-left: 19em;
+    margin-left: 14.15em;
+    margin-top: 0em;
+    margin-bottom: 2em;
+    width: 20em;
+    margin-left: 6em;
     height: 5em;
 }
 
 .carDet {
- width: 40%;
-    margin-left: 3em;
+width: 100%;
+    margin-left: 0em;
     margin-top: 1em;
-    margin-bottom: 10em;
+    margin-bottom: 12em;
     font-family: Trebuchet MS;
     font-weight: 700;
-    font-size: 0.65em;
+    font-size: 0.85em;
 }
 
 .drop-down-container ul li select, button {
@@ -1417,7 +1450,14 @@ position: relative;
 
 
 .search-car-list {
-    margin-top: 12em;
+   /* margin-top: 12em;*/
+}
+
+.drop-down-container {
+    margin-top: 0;
+    width: 100%;
+    height: 8.8em;
+    background-color: #26272b;
 }
 
 }
@@ -1478,10 +1518,10 @@ position: relative;
    }
    
    .drop-down-container ul {
-    margin: 0 11%;
-    padding: 0 5%;
+    margin: 0 0%;
+    padding: 0 1%;
     display: block;
-    margin-left: 21%;
+    margin-left: 0%;
 }
    
    .fcars-hr-st {
@@ -1649,29 +1689,29 @@ margin-left: 41%;
 }
 
 .open-button {
-       background-color: #555;
+      background-color: #555;
     color: white;
     padding: 1em 2em;
     border: none;
     cursor: pointer;
     opacity: 0.8;
     position: relative;
-   margin-left: 14.15em;
-    margin-top: -13em;
-    margin-bottom: -4em;
-   width: 10em;
-    margin-left: 19em;
+    margin-left: 14.15em;
+    margin-top: 0em;
+    margin-bottom: 2em;
+    width: 27em;
+    margin-left: 5em;
     height: 5em;
 }
 
 .carDet {
- width: 40%;
-    margin-left: 3em;
+ width: 100%;
+    margin-left: 0em;
     margin-top: 1em;
-    margin-bottom: 10em;
+    margin-bottom: 13em;
     font-family: Trebuchet MS;
     font-weight: 700;
-    font-size: 0.65em;
+    font-size: 0.85em;
 }
 
 .drop-down-container ul li select, button {
@@ -1710,9 +1750,16 @@ margin-left: 41%;
 
 
 .search-car-list {
-    margin-top: 12em;
+   /* margin-top: 12em;*/
 }
 
+
+.drop-down-container {
+   margin-top: 0;
+    width: 100%;
+    height: 9.8em;
+    background-color: #26272b;
+}
 }
 
 @media only screen and (min-width: 501px) and (max-width: 640px)  
@@ -1774,7 +1821,7 @@ margin-left: 41%;
    margin: 0 11%;
     padding: 0 5%;
     display: block;
-    margin-left: 7%;
+    margin-left: 0%;
     margin-right: 0%;
 }
    
@@ -1943,29 +1990,29 @@ margin-top: -17%;
 }
 
 .open-button {
-       background-color: #555;
+      background-color: #555;
     color: white;
     padding: 1em 2em;
     border: none;
     cursor: pointer;
     opacity: 0.8;
     position: relative;
-   margin-left: 14.15em;
-    margin-top: -13em;
-    margin-bottom: -4em;
-   width: 10em;
-    margin-left: 19em;
+    margin-left: 14.15em;
+    margin-top: 0em;
+    margin-bottom: 1em;
+    width: 21em;
+    margin-left: 1em;
     height: 5em;
 }
 
 .carDet {
- width: 40%;
-    margin-left: 3em;
+ width: 100%;
+    margin-left: 0em;
     margin-top: 1em;
     margin-bottom: 10em;
     font-family: Trebuchet MS;
     font-weight: 700;
-    font-size: 0.65em;
+    font-size: 1.25em;
 }
 
 .drop-down-container ul li select, button {
@@ -1996,7 +2043,7 @@ margin-top: -17%;
     list-style: none;
     display: inline-block;
     float: left;
-    margin: 4.5% 4.5%;
+    margin: 2.5% -2.5%;
 }
 
 .index-contact-us {
@@ -2005,13 +2052,20 @@ margin-top: -17%;
 
 
 .search-car-list {
-   margin-top: 19em;
+  /* margin-top: 19em;*/
 }
 
 .noresult {
     font-size: 2.5em;
     margin-left: 22%;
     color: red;
+}
+
+.drop-down-container {
+    margin-top: 0;
+    width: 100%;
+    height: 10.8em;
+    background-color: #26272b;
 }
 
 }
@@ -2251,29 +2305,29 @@ margin-left: 41%;
     cursor: pointer;
     opacity: 0.8;
     position: relative;
-   margin-left: 14.15em;
-    margin-top: -13em;
+    margin-left: 14.15em;
+    margin-top: 6em;
     margin-bottom: -4em;
-   width: 10em;
-    margin-left: 19em;
+    width: 43em;
+    margin-left: 10em;
     height: 5em;
 }
 
 .carDet {
- width: 40%;
-    margin-left: 3em;
+ width: 100%;
+    margin-left: -1em;
     margin-top: 1em;
     margin-bottom: 10em;
     font-family: Trebuchet MS;
     font-weight: 700;
-    font-size: 0.65em;
+    font-size: 0.95em;
 }
 
 .drop-down-container ul li select, button {
     display: block;
     text-decoration: none;
     font-family: Trebuchet MS;
-    font-size: 0.70em;
+    font-size: 0.55em;
     color: black;
     padding: 0.80em 1.50em;
     background-color: white;
@@ -2281,23 +2335,21 @@ margin-left: 41%;
     /* border: 8em; */
     border-radius: 0.5em;
     margin-left: 5.5em;
-   
-  
 }
 
 .drop-down-container ul li button {
-        background-color: red;
+       background-color: red;
     color: white;
- width: 66%;
-    margin-top: 0.25em;
-    padding: 11% 5%;
+    width: 66%;
+    margin-top: 0.15em;
+    padding: 6% 5%;
 }
 
 .drop-down-container ul li {
     list-style: none;
     display: inline-block;
     float: left;
-    margin: 4.5% 4.5%;
+    margin: 3.5% -2.5%;
 }
 
 .index-contact-us {
@@ -2306,7 +2358,7 @@ margin-left: 41%;
 
 
 .search-car-list {
-   margin-top: 19em;
+/*   margin-top: 19em;*/
 }
 
 
@@ -2375,11 +2427,11 @@ margin-left: 41%;
    }
    
    .drop-down-container ul {
- margin: 0 11%;
-    padding: 0 5%;
+    margin: 0 11%;
+    padding: 0 0%;
     display: block;
-    margin-left: 7%;
-   margin-right: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
 }
    
    .fcars-hr-st {
@@ -2547,29 +2599,29 @@ margin-left: 41%;
 }
 
 .open-button {
-       background-color: #555;
+    background-color: #555;
     color: white;
     padding: 1em 2em;
     border: none;
     cursor: pointer;
     opacity: 0.8;
     position: relative;
-   margin-left: 14.15em;
-    margin-top: -13em;
-    margin-bottom: -4em;
-   width: 10em;
-    margin-left: 19em;
+    margin-left: 14.15em;
+    margin-top: 0em;
+    margin-bottom: 1em;
+    width: 26em;
+    margin-left: 9em;
     height: 5em;
 }
 
 .carDet {
-    width: 40%;
-    margin-left: 3em;
+    width: 80%;
+    margin-left: 0em;
     margin-top: 1em;
     margin-bottom: 10em;
     font-family: Trebuchet MS;
     font-weight: 700;
-   font-size: 0.95em;
+    font-size: 0.95em;
 }
 
 .drop-down-container ul li select, button {
@@ -2602,7 +2654,7 @@ margin-left: 41%;
     list-style: none;
     display: inline-block;
     float: left;
-    margin: 4.5% 4.5%;
+    margin: 1.5% -3.5%;
 }
 
 .index-contact-us {
@@ -2611,7 +2663,7 @@ margin-top: -20%;
 
 
 .search-car-list {
-   margin-top: 19em;
+ /*  margin-top: 19em;*/
 }
 
 .noresult {
@@ -2994,8 +3046,8 @@ margin-top: 4%;
  margin: 0 11%;
     padding: 0 5%;
     display: block;
-    margin-left: 7%;
-   margin-right: 0%;
+    margin-left: -9%;
+    margin-right: 0%;
 }
    
    .fcars-hr-st {
@@ -3224,10 +3276,10 @@ margin-top: -13%;
 }
 
 .drop-down-container ul li {
-    list-style: none;
+   list-style: none;
     display: inline-block;
     float: left;
-    margin: 4.5% 4.5%;
+    margin: 0.5% 0.5%;
 }
 
 .index-contact-us {
@@ -3236,7 +3288,7 @@ margin-top: 4%;
 
 
 .search-car-list {
-  margin-top: 23em;
+/*  margin-top: 23em;*/
 }
 
 .noresult {

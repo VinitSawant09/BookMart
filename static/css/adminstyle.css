@@ -529,3 +529,15 @@ width: 85%;
     margin-left: 0%;
 
 }
+
+
+@media only screen and (min-width: 320px) and (max-width: 359px)
+{
+.meta-nav {
+    float: right;
+    position: relative;
+    text-align: left;
+    margin-right: 50px;
+    margin-top: 30px;
+}
+}

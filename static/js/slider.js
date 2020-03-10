@@ -82,14 +82,60 @@ $.ajax(
 
 	            	 			}
 
-	      $(".regular").slick({
+	       var windowWidth = $(window).width();
 
-	            	   				 dots: false,
-	            	  		 		 infinite: true,
-	            	    			 slidesToShow: 4,
-	            	  	  			 slidesToScroll: 4,
+                            // alert(windowWidth);
 
-	            	 			 });
+                             if( windowWidth >= 320 &&  windowWidth<=500)
+                            	 {
+                            	 $(".regular").slick({
+
+    	 	            	   		 dots: false,
+    	 	            	  		 infinite: true,
+    	 	            	    	 slidesToShow: 1,
+    	 	            	  	     slidesToScroll: 1,
+
+
+    	 	            	 		 });
+
+                            	 }
+                             else if( windowWidth >= 501 &&  windowWidth<=767)
+                        	 {
+                        	 $(".regular").slick({
+
+	 	            	   		 dots: false,
+	 	            	  		 infinite: true,
+	 	            	    	 slidesToShow: 2,
+	 	            	  	     slidesToScroll: 1,
+
+
+	 	            	 		 });
+
+                        	 }
+                             else if( windowWidth >= 768 &&  windowWidth<=900)
+                        	 {
+                        	 $(".regular").slick({
+
+	 	            	   		 dots: false,
+	 	            	  		 infinite: true,
+	 	            	    	 slidesToShow: 3,
+	 	            	  	     slidesToScroll: 1,
+
+
+	 	            	 		 });
+
+                        	 }
+
+                             else{
+
+                            	 $(".regular").slick({
+
+    	 	            	   		 dots: false,
+    	 	            	  		 infinite: true,
+    	 	            	    	 slidesToShow: 4,
+    	 	            	  	     slidesToScroll: 4
+    	 	            	 		 });
+                             }
 
 
 
@@ -205,7 +251,7 @@ $.ajax(
 
 	           			 	 var windowWidth = $(window).width();
 
-                           // alert(windowWidth);
+                             alert(windowWidth);
 
                              if( windowWidth >= 320 &&  windowWidth<=500)
                             	 {
@@ -324,15 +370,60 @@ $.ajax(
 
 
 
-            		  	 $(".regular").slick({
+            		  	 var windowWidth = $(window).width();
 
-	            	   				 dots: false,
-	            	  		 		 infinite: true,
-	            	    			 slidesToShow: 4,
-	            	  	  			 slidesToScroll: 4,
-	            	  	  			 focusOnSelect:true,
-	            	  	  			  touchMove: false,
-	            	 			 });
+
+
+                             if( windowWidth >= 320 &&  windowWidth<=500)
+                            	 {
+                            	 $(".regular").slick({
+
+    	 	            	   		 dots: false,
+    	 	            	  		 infinite: true,
+    	 	            	    	 slidesToShow: 1,
+    	 	            	  	     slidesToScroll: 1,
+
+
+    	 	            	 		 });
+
+                            	 }
+                             else if( windowWidth >= 501 &&  windowWidth<=767)
+                        	 {
+                        	 $(".regular").slick({
+
+	 	            	   		 dots: false,
+	 	            	  		 infinite: true,
+	 	            	    	 slidesToShow: 2,
+	 	            	  	     slidesToScroll: 1,
+
+
+	 	            	 		 });
+
+                        	 }
+                             else if( windowWidth >= 768 &&  windowWidth<=900)
+                        	 {
+                        	 $(".regular").slick({
+
+	 	            	   		 dots: false,
+	 	            	  		 infinite: true,
+	 	            	    	 slidesToShow: 3,
+	 	            	  	     slidesToScroll: 1,
+
+
+	 	            	 		 });
+
+                        	 }
+
+                             else{
+
+                            	 $(".regular").slick({
+
+    	 	            	   		 dots: false,
+    	 	            	  		 infinite: true,
+    	 	            	    	 slidesToShow: 4,
+    	 	            	  	     slidesToScroll: 4
+    	 	            	 		 });
+                             }
 
 
 
