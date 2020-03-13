@@ -1,6 +1,3 @@
-from datetime import date
-import time
-import passlib
 from passlib.hash import sha256_crypt
 import pyodbc
 from flask import session

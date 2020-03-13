@@ -3,8 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import random
 import string
-from dao.db import dataBase as database
-from dao.userLoginDAO import userLoginDAO as userLoginDAO
+
 class email:
 
     def __init__(self):

@@ -43,6 +43,39 @@ function loginForm()
      }
 }
 
+/*
+$('#username').keydown(function (e) {
+alert("kydown");
+if ( ( key >= 48 && key <= 90 ) || ( key >= 96 && key <= 105 ) || key==8)
+{
+   alert("if");
+   return true;
+}
+else
+{
+ alert("else");
+ document.getElementById("errorDiv").innerHTML="Special characters not allowed in User Name.!";
+ return false;
+}
+});*/
+
+function uniKeyCode(event) {
+
+  var key = event.keyCode;
+ if ( ( key >= 48 && key <= 57 ) || ( key >= 65 && key <= 90 ) || ( key >= 96 && key <= 122 ) || key==8)
+{
+
+   return true;
+}
+else
+{
+
+
+return false;
+}
+}
+
+
 function logout()
 {
  window.location.href ='/logout/';
