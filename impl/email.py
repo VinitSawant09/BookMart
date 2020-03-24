@@ -24,8 +24,8 @@ class email:
         print("inside sendEmail")
         smtp_server = "smtp.gmail.com"
         port = 587  # For starttls
-        sender_email = "vinitvilassawant@gmail.com"
-        password = "9167041011"
+        sender_email = "#"
+        password = "#"
         # Create a secure SSL context
         context = ssl.create_default_context()
 
